@@ -10,7 +10,7 @@
 
 ### Default Environment Variables exposed by GitHub
 For a full list of default environment variables exposed by GitHub see https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables#default-environment-variables.
-| Variable Name | Description | Example |
+| Name | Desc | Example |
 |---|---|---|
 |`GITHUB_ACTOR`| The name of the person or app that initiated the workflow. | `octocat` |
 |`GITHUB_REPOSITORY`| The owner and repository name. | `octocat/action` |
@@ -18,7 +18,7 @@ For a full list of default environment variables exposed by GitHub see https://h
 |`GITHUB_REF`| The branch or tag ref that triggered the workflow. If neither a branch or tag is available for the event type, the variable will not exist. | `refs/heads/feature-branch-1` |
 
 ### Github Related Variables
-| Variable Name | Description | Example |
+| Name | Desc | Example |
 |---|---|---|
 |`GITHUB_REPOSITORY_OWNER`| The owner of the repository  | `varunsridharan/your-git-repo` => `varunsridharan` |
 |`GITHUB_REPOSITORY_NAME`| The name of the repository  | `varunsridharan/your-git-repo` => `your-git-repo` |
@@ -27,19 +27,26 @@ For a full list of default environment variables exposed by GitHub see https://h
 
 
 ### Workflow Hook Related Variables
-| Variable Name | Description |
-| :---: | --- |
-| `VS_BEFORE_HOOK_FILE` | |
-| `VS_AFTER_HOOK_FILE` | |
-| `VS_BEFORE_HOOK_FILE_LOCATION` | |
-| `VS_AFTER_HOOK_FILE_LOCATION` | |
+| Name | Desc | Default |
+|---|---|---|
+| `VS_BEFORE_HOOK_FILE` | Custom Hook File Name | `before.sh` |
+| `VS_AFTER_HOOK_FILE` | Custom Hook File Name | `before.sh` 
+| `VS_BEFORE_HOOK_FILE_LOCATION` | Exact Location Of The Hook File | `./.github/workflows/before.sh` 
+| `VS_AFTER_HOOK_FILE_LOCATION` | Exact Location Of The Hook File | `./.github/workflows/after.sh` 
 
 ### Gitbook Change Log Updater Related Variables
-| Variable Name | Description |
-| :---: | --- |
-| `CHLOG_REPO_ORG_NAME` | |
-| `LOCAL_CHANGE_LOG_FILE` | |
-| `REMOTE_CHANGE_LOG_FILE` | |
+| Name | Desc | Default |
+|---|---|---|
+| `CHLOG_REPO_ORG_NAME` | Gitbook's Docs Account Holder Username | `vs-docs` |
+| `LOCAL_CHANGE_LOG_FILE` | Change Log File Name IN Current Repo | `CHANGELOG.md` |
+| `REMOTE_CHANGE_LOG_FILE` | Change Log File Name IN Docs Repo | `change-log.md` |
+
+### Envato Release Related Variables
+| Name | Desc | Default |
+|---|---|---|
+| `ENVATO_DIST_IGNORE` | varunsridharan/action-envato-publish Dist Ignore File Location | `./.github/distignore.txt` |
+| `ENVATO_ASSETS_DIST_IGNORE` | varunsridharan/action-envato-publish Dist Assets Ignore File Location | `./.github/assets-distignore.txt` |
+
 
 ---
 

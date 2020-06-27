@@ -44,3 +44,4 @@ else
 fi
 
 set_action_env_ifnot_exists "ENVATO_ASSETS_DIST_IGNORE" "$DIST_ASSETS_IGNORE_LOCATION"
+set_action_env_ifnot_exists "ENVATO_DIST_IGNORE" "$DIST_IGNORE_LOCATION"
