@@ -22,7 +22,7 @@ EVN_VARS[REMOTE_CHANGE_LOG_FILE]="change-log.md"
 for key in "${!EVN_VARS[@]}"; do
   default_evn=$(echo ${!key})
   if [ -z "$default_evn" ]; then
-    echo "::set-env name=${key}::${EVN_VARS[$key]}"
+    set_action_env ${key} ${ENV_VARS[$key]}
     echo "✔️ ENV  ${key} SET WITH VALUE ${EVN_VARS[$key]}"
   else
     echo ""
