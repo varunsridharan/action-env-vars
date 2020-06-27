@@ -6,6 +6,31 @@
 - Public Use Of This Action Is Not ADVISED. ⚠️  Use @ Your OWN RISK
 ```
 
+## ENV Variables 
+
+### Github Related Variables
+| Variable Name | Description |
+| :---: | --- |
+| `GITHUB_REPOSITORY_OWNER` | |
+| `GITHUB_REPOSITORY_NAME` | |
+| `GITHUB_REF_NAME` | |
+| `GITHUB_SHA_SHORT` | |
+
+### Workflow Hook Related Variables
+| Variable Name | Description |
+| :---: | --- |
+| `VS_BEFORE_HOOK_FILE` | |
+| `VS_AFTER_HOOK_FILE` | |
+| `VS_BEFORE_HOOK_FILE_LOCATION` | |
+| `VS_AFTER_HOOK_FILE_LOCATION` | |
+
+### Gitbook Change Log Updater Related Variables
+| Variable Name | Description |
+| :---: | --- |
+| `CHLOG_REPO_ORG_NAME` | |
+| `LOCAL_CHANGE_LOG_FILE` | |
+| `REMOTE_CHANGE_LOG_FILE` | |
+
 ---
 
 ## 🤝 Contributing
