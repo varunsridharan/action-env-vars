@@ -8,13 +8,24 @@
 
 ## ENV Variables 
 
+### Default Environment Variables exposed by GitHub
+For a full list of default environment variables exposed by GitHub see https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables#default-environment-variables.
+| Variable Name | Description | Example |
+| :---: |---|---|
+|`GITHUB_ACTOR`| The name of the person or app that initiated the workflow. | `octocat` |
+|`GITHUB_REPOSITORY`| The owner and repository name. | `octocat/action` |
+|`GITHUB_SHA`| The commit SHA that triggered the workflow. | `ffac537e6cbbf934b08745a378932722df287a53` |
+|`GITHUB_REF`| The branch or tag ref that triggered the workflow. If neither a branch or tag is available for the event type, the variable will not exist. | `refs/heads/feature-branch-1` |
+
 ### Github Related Variables
-| Variable Name | Description |
+| Variable Name | Description | Example |
 | :---: | --- |
-| `GITHUB_REPOSITORY_OWNER` | Provides Exact Github Owner / **Example** `varunsridharan/your-git-repo` the owner is `varunsridharan` |
-| `GITHUB_REPOSITORY_NAME` | Provides Exact Github Repo Name / **Example** `varunsridharan/your-git-repo` the owner is `your-git-repo` |
-| `GITHUB_REF_NAME` | |
-| `GITHUB_SHA_SHORT` | |
+|`GITHUB_REPOSITORY_OWNER`| The owner of the repository  | `varunsridharan/your-git-repo` => `varunsridharan` |
+|`GITHUB_REPOSITORY_NAME`| The name of the repository  | `varunsridharan/your-git-repo` => `your-git-repo` |
+|`GITHUB_REF_NAME`| The branch name that triggered the workflow. If neither a branch or tag is available for the event type, the variable will not exist. | `feature-branch-1` |
+|`GITHUB_SHA_SHORT`| The shortened commit SHA (8 characters) that triggered the workflow. | `ffac537e` |
+
+
 
 ### Workflow Hook Related Variables
 | Variable Name | Description |
