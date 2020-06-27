@@ -1,0 +1,9 @@
+name: 'VS Action Utility'
+description: 'Public Use Of This Action Is Not ADVISED. Use @ Your OWN RISK'
+author: 'varunsridharan'
+branding:
+  icon: 'message-square'
+  color: 'gray-dark'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
