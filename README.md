@@ -11,8 +11,8 @@
 ### Github Related Variables
 | Variable Name | Description |
 | :---: | --- |
-| `GITHUB_REPOSITORY_OWNER` | |
-| `GITHUB_REPOSITORY_NAME` | |
+| `GITHUB_REPOSITORY_OWNER` | Provides Exact Github Owner / **Example** `varunsridharan/your-git-repo` the owner is `varunsridharan` |
+| `GITHUB_REPOSITORY_NAME` | Provides Exact Github Repo Name / **Example** `varunsridharan/your-git-repo` the owner is `your-git-repo` |
 | `GITHUB_REF_NAME` | |
 | `GITHUB_SHA_SHORT` | |
 
