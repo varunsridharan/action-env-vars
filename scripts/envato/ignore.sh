@@ -10,9 +10,9 @@ if [ -f "$GITHUB_WORKSPACE/envato-distignore.txt" ]; then
   DIST_IGNORE_LOCATION="$GITHUB_WORKSPACE/envato-distignore.txt"
 elif [ -f "$GITHUB_WORKSPACE/.github/envato-distignore.txt" ]; then
   DIST_IGNORE_LOCATION="$GITHUB_WORKSPACE/.github/envato-distignore.txt"
-elif [ -f "$GITHUB_WORKSPACE/distignore.txt" ]
+elif [ -f "$GITHUB_WORKSPACE/distignore.txt" ]; then
   DIST_IGNORE_LOCATION="$GITHUB_WORKSPACE/.distignore.txt"
-elif [ -f "$GITHUB_WORKSPACE/.github/distignore.txt" ]
+elif [ -f "$GITHUB_WORKSPACE/.github/distignore.txt" ]; then
   DIST_IGNORE_LOCATION="$GITHUB_WORKSPACE/.github/distignore.txt"
 fi
 
