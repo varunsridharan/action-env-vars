@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Loads Common Funtion
+. /vs-action-utility/functions.sh
+
 declare -A EVN_VARS
 
 ##### General Use Vars ###
