@@ -54,5 +54,5 @@ if ( empty( $assets_ignore_file ) ) {
 	_echo( "✔️ Assets DISTIGNORE File Found : ${workspace}/${ignore_file}" );
 }
 
-set_action_env_not_exists( 'ENVATO_DIST_IGNORE', $ignore_file );
-set_action_env_not_exists( 'ENVATO_ASSETS_DIST_IGNORE', $assets_ignore_file );
+set_action_env_not_exists( 'ENVATO_DIST_IGNORE', $ignore_file, true );
+set_action_env_not_exists( 'ENVATO_ASSETS_DIST_IGNORE', $assets_ignore_file, true );
