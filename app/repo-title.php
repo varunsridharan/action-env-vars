@@ -17,7 +17,7 @@ if ( ! is_env_not_exists( get_env( 'GITHUB_REPOSITORY_TITLE' ) ) || ! empty( get
 			_echo( "⚠️ Repository Slug is used as Title Found In Database -  ${slug}" );
 		}
 
-		set_action_env_not_exists( 'GITHUB_REPOSITORY_TITLE', $title );
+		set_action_env_not_exists( 'GITHUB_REPOSITORY_TITLE', $title, true );
 	} else {
 		_echo( '🛑 Repository SLUG Not Found !' );
 	}
