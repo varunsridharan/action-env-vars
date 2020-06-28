@@ -7,5 +7,6 @@ echo "    --> Download Repo Title Database"
 wget "$REPO_TITLE_DB"
 
 echo "DB Value"
+echo "ENV VAR : $GITHUB_REPOSITORY_SLUG"
 JSON_KEY=".'$GITHUB_REPOSITORY_SLUG'"
 echo $(jq  "$JSON_KEY" repo-titles.json)
