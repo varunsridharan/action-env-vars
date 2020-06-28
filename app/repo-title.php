@@ -11,10 +11,10 @@ if ( ! is_env_not_exists( get_env( 'GITHUB_REPOSITORY_TITLE' ) ) || ! empty( get
 
 		if ( isset( $repo_titles[ $slug ] ) ) {
 			$title = $repo_titles[ $slug ];
-			_echo( "✔️ Repository Title Found In Database -  ${title}" );
+			_echo( '✔️ Repository Title Found In Database' );
 		} else {
 			$title = $slug;
-			_echo( "⚠️ Repository Slug is used as Title Found In Database -  ${slug}" );
+			_echo( '⚠️ Repository Slug is used as Title Found In Database' );
 		}
 
 		set_action_env_not_exists( 'GITHUB_REPOSITORY_TITLE', $title, true );
