@@ -7,8 +7,13 @@
  * @param $value
  */
 function vs_set_action_env( $key, $value ) {
-	$output = '';
 	echo shell_exec( 'echo "::set-env name=' . $key . '::' . $value . '"' );
-	//var_dump( shell_exec( "echo \"::set-env name=$key::$value\"" ) );
-	//var_dump( $output );
+}
+
+function vs_set_action_evn_ifnot_exists( $key, $value ) {
+	if ( ! isset( $_ENV[ $key ] ) ) {
+		vs_set_action_env( $key, $value );
+		return true;
+	}
+	return false;
 }
