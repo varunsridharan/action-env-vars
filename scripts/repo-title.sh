@@ -6,6 +6,5 @@ echo "🎞️ Checking If REPO Database Has Any"
 echo "    --> Download Repo Title Database"
 wget "$REPO_TITLE_DB"
 
-if [ jq "has('$GITHUB_REPOSITORY_SLUG')" repo-titles.json ]; then
-  echo $(jq ".$GITHUB_REPOSITORY_SLUG" repo-titles.json)
-fi
+echo "DB Value"
+echo $(jq ".$GITHUB_REPOSITORY_SLUG" repo-titles.json)
