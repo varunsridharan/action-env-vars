@@ -8,7 +8,7 @@
  */
 function vs_set_action_env( $key, $value ) {
 	$output = '';
-	var_dump( shell_exec( 'echo "::set-env name=' . $key . '::' . $value . '"' ) );
+	echo shell_exec( 'echo "::set-env name=' . $key . '::' . $value . '"' );
 	//var_dump( shell_exec( "echo \"::set-env name=$key::$value\"" ) );
 	//var_dump( $output );
 }
