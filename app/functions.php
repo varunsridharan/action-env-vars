@@ -23,7 +23,7 @@ function vs_set_action_evn_ifnot_exists( $key, $value ) {
 	return ( ! isset( $_ENV[ $key ] ) ) ? vs_set_action_env( $key, $value ) : false;
 }
 
-function _echo( $content, $is_cmd ) {
+function _echo( $content, $is_cmd = false ) {
 	if ( $is_cmd ) {
 		echo PHP_EOL . $content . PHP_EOL;
 	} else {
