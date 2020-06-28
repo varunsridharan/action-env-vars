@@ -2,7 +2,7 @@
 _echo( '###[group] 🔧 Setup Repository Title' );
 
 
-if ( ! is_env_not_exists( get_env( 'GITHUB_REPOSITORY_TITLE' ) ) && ! empty( get_env( 'GITHUB_REPOSITORY_TITLE' ) ) ) {
+if ( ! is_env_not_exists( get_env( 'GITHUB_REPOSITORY_TITLE' ) ) || ! empty( get_env( 'GITHUB_REPOSITORY_TITLE' ) ) ) {
 	if ( ! is_env_not_exists( get_env( 'GITHUB_REPOSITORY_SLUG' ) ) ) {
 		$slug        = get_env( 'GITHUB_REPOSITORY_SLUG' );
 		$repo_titles = json_decode( file_get_contents( 'https://cdn.svarun.dev/json/repo-titles.json' ), true );
