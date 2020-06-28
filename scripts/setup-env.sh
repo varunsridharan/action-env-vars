@@ -7,7 +7,7 @@ declare -A EVN_VARS
 
 ##### General Use Vars ###
 EVN_VARS[GITHUB_REPOSITORY_OWNER]=$(echo $GITHUB_REPOSITORY | cut -d'/' -f 1)
-EVN_VARS[GITHUB_REPOSITORY_NAME]=$(echo $GITHUB_REPOSITORY | cut -d'/' -f 2)
+EVN_VARS[GITHUB_REPOSITORY_SLUG]=$(echo $GITHUB_REPOSITORY | cut -d'/' -f 2)
 EVN_VARS[GITHUB_REF_NAME]=$(echo $GITHUB_REF | cut -d'/' -f 3)
 EVN_VARS[GITHUB_SHA_SHORT]=$(echo $GITHUB_SHA | cut -c1-8)
 

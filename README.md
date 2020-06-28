@@ -21,7 +21,7 @@ For a full list of default environment variables exposed by GitHub see https://h
 | Name | Desc | Example |
 |---|---|---|
 |`GITHUB_REPOSITORY_OWNER`| The owner of the repository  | `varunsridharan/your-git-repo` => `varunsridharan` |
-|`GITHUB_REPOSITORY_NAME`| The name of the repository  | `varunsridharan/your-git-repo` => `your-git-repo` |
+|`GITHUB_REPOSITORY_SLUG`| The name of the repository  | `varunsridharan/your-git-repo` => `your-git-repo` |
 |`GITHUB_REF_NAME`| The branch name that triggered the workflow. If neither a branch or tag is available for the event type, the variable will not exist. | `feature-branch-1` |
 |`GITHUB_SHA_SHORT`| The shortened commit SHA (8 characters) that triggered the workflow. | `ffac537e` |
 
