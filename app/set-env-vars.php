@@ -8,7 +8,7 @@ _echo( '' );
 
 _echo( 'Getting : GH_LOCAL_KEY' );
 
-var_dump( get_env( 'GH_LOCAL_KEY ' ) );
+var_dump( get_env( 'GH_LOCAL_KEY' ) );
 
 _echo( '' );
 
