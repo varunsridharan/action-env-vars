@@ -7,5 +7,7 @@
  * @param $value
  */
 function vs_set_action_env( $key, $value ) {
-	exec( "echo \"::set-env name=$key::$value\"" );
+	$output = '';
+	exec( "echo \"::set-env name=$key::$value\"", $output );
+	var_dump( $output );
 }
