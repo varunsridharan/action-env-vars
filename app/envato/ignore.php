@@ -37,7 +37,7 @@ foreach ( $files_check['assets'] as $loc ) {
 }
 
 if ( empty( $ignore_file ) ) {
-	_echo( '⚠️ DISTIGNORE File Not Found ! | Creating Default ' );
+	_echo( '::warning:: ⚠️ DISTIGNORE File Not Found ! | Creating Default ' );
 	$ignore_file = $workspace . '/' . $default['ignore'];
 	@file_put_contents( $ignore_file, $default_ignore_content );
 } else {
@@ -46,7 +46,7 @@ if ( empty( $ignore_file ) ) {
 }
 
 if ( empty( $assets_ignore_file ) ) {
-	_echo( '⚠️ Assets DISTIGNORE File Not Found ! | Creating Default ' );
+	_echo( '::warning:: ⚠️ Assets DISTIGNORE File Not Found ! | Creating Default ' );
 	$assets_ignore_file = $workspace . '/' . $default['assets'];
 	@file_put_contents( $assets_ignore_file, $default_assets_ignore_content );
 } else {
