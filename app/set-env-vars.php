@@ -1,13 +1,15 @@
 <?php
-echo '###[group] 🛠️  Setting Required ENV Variables' . PHP_EOL;
+_echo( '###[group] 🛠️  Setting Required ENV Variables' );
 
-#var_dump( vs_set_action_evn_ifnot_exists( 'GH_LOCAL_KEY', 'Here Is Your KEY 1' ) );
-#var_dump( vs_set_action_evn_ifnot_exists( 'GH_LOCAL_KEYE', 'Here Is Your KEY 2' ) );
+var_dump( vs_set_action_evn_ifnot_exists( 'GH_LOCAL_KEY', 'Here Is Your KEY 1' ) );
+var_dump( vs_set_action_evn_ifnot_exists( 'GH_LOCAL_KEYE', 'Here Is Your KEY 2' ) );
 
-echo " ";
+_echo( '' );
 
-echo 'Getting : GH_LOCAL_KEY';
+_echo( 'Getting : GH_LOCAL_KEY' );
+
 var_dump( getenv( 'GH_LOCAL_KEY ' ) );
 
+_echo( '' );
 
-echo '###[endgroup]' . PHP_EOL;
+_echo( '###[endgroup]' );
