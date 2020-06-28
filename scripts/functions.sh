@@ -2,6 +2,7 @@
 
 set_action_env () {
   echo "::set-env name=$1::$2"
+  eval ${1}=${2}
 }
 
 set_action_env_ifnot_exists(){
