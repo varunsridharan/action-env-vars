@@ -8,6 +8,7 @@
  */
 function vs_set_action_env( $key, $value ) {
 	echo shell_exec( 'echo "::set-env name=' . $key . '::' . $value . '"' );
+	$_ENV[ $key ] = $value;
 }
 
 function vs_set_action_evn_ifnot_exists( $key, $value ) {
