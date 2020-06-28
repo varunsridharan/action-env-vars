@@ -8,6 +8,12 @@ echo "###[endgroup]"
 
 echo " "
 
+echo "###[group] Setup Repository Title"
+bash /vs-action-utility/repo-title.sh
+echo "###[endgroup]"
+
+echo " "
+
 echo "###[group] Handle Envato Workflow"
 bash /vs-action-utility/envato/ignore.sh
 echo "###[endgroup]"
