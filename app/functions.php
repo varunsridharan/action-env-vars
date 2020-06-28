@@ -8,7 +8,6 @@
  */
 function vs_set_action_env( $key, $value ) {
 	$output = '';
-	putenv( "$key=$value" );
-	exec( "::set-env name=$key::$value", $output );
+	exec( 'sh ' . APP_PATH . "set-env.sh $key $value", $output );
 	var_dump( $output );
 }
