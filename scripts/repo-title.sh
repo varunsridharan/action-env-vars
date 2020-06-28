@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Loads Common Funtion
+. /vs-action-utility/functions.sh
+
 REPO_TITLE_DB="https://cdn.svarun.dev/json/repo-titles.json"
 
 echo "🎞️ Checking If REPO Database Has Any"
@@ -8,5 +11,6 @@ wget "$REPO_TITLE_DB"
 
 echo "DB Value"
 echo "ENV VAR : $GITHUB_REPOSITORY_SLUG"
-JSON_KEY=".'$GITHUB_REPOSITORY_SLUG'"
-echo $(jq  "$JSON_KEY" repo-titles.json)
+echo "ENV VAR2 : ${GITHUB_REPOSITORY_SLUG}"
+#JSON_KEY=".'$GITHUB_REPOSITORY_SLUG'"
+#echo $(jq  "$JSON_KEY" repo-titles.json)
