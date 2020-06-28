@@ -4,8 +4,10 @@
  *
  * @param $key
  * @param $value
+ *
+ * @return true
  */
-function vs_set_action_env( $key, $value ) {
+function set_action_env( $key, $value ) {
 	_echo( "::set-env name=${key}::${value}", true );
 	$_ENV[ $key ] = $value;
 	return true;
@@ -19,8 +21,16 @@ function vs_set_action_env( $key, $value ) {
  *
  * @return bool
  */
-function vs_set_action_evn_ifnot_exists( $key, $value ) {
-	return ( ! isset( $_ENV[ $key ] ) ) ? vs_set_action_env( $key, $value ) : false;
+function set_action_env_not_exists( $key, $value ) {
+	return ( ! isset( $_ENV[ $key ] ) ) ? set_action_env( $key, $value ) : false;
+}
+
+function get_env( $key ) {
+	return ( isset( $_ENV[ $key ] ) ) ? $_ENV[ $key ] : new ENV_Not_Exists();
+}
+
+function is_env_not_exists( $instance ) {
+	return ( $instance instanceof \ENV_Not_Exists );
 }
 
 function _echo( $content, $is_cmd = false ) {
