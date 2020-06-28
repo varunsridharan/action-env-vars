@@ -7,6 +7,7 @@
  */
 function vs_set_action_env( $key, $value ) {
 	echo "::set-env name=${key}::${value}";
+	echo PHP_EOL;
 	$_ENV[ $key ] = $value;
 	return true;
 }
