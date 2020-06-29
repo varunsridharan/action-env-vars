@@ -24,6 +24,7 @@ if ( ! empty( $groups ) ) {
 		if ( is_array( $value ) ) {
 			$value = implode( PHP_EOL, array_filter( $value ) );
 		}
+		$value              = '|' . PHP_EOL . $value;
 		$groups[ $env_var ] = $value;
 		set_action_env_not_exists( $env_var, $value, true );
 	}
