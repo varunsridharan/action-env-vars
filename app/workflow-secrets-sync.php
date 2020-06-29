@@ -18,10 +18,12 @@ foreach ( $json as $repo => $vars ) {
 }
 
 if ( ! empty( $groups ) ) {
-	foreach ( $groups as $ENV_VAR => $value ) {
+	foreach ( $groups as $env_var => $value ) {
 		if ( is_array( $value ) ) {
-			$value = implode( PHP_EOL, $value );
+			$value = implode( PHP_EOL, array_filter( $value ) );
 		}
-		set_action_env_not_exists( $ENV_VAR, $value, true );
+		set_action_env_not_exists( $env_var, $value, true );
+		_echo( ' ' );
+		_echo( ' ' );
 	}
 }
