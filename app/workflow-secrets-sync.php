@@ -16,14 +16,20 @@ foreach ( $json as $repo => $vars ) {
 		$groups[ $group ][] = $repo;
 	}
 }
-
 echo json_encode( $groups );
-var_dump( $groups );
+_echo( ' ' );
+_echo( ' ' );
 if ( ! empty( $groups ) ) {
 	foreach ( $groups as $env_var => $value ) {
 		if ( is_array( $value ) ) {
 			$value = implode( PHP_EOL, array_filter( $value ) );
 		}
+		$groups[ $env_var ] = $value;
 		set_action_env_not_exists( $env_var, $value, true );
 	}
 }
+
+_echo( ' ' );
+_echo( ' ' );
+echo json_encode( $groups );
+var_dump( $groups );
