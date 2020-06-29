@@ -1,5 +1,5 @@
 <?php
-_echo( '###[group] 🔧 Setup Repository Title' );
+_echo( '###[group] 🔧  Setup Repository Title' );
 
 
 if ( ! is_env_not_exists( get_env( 'GITHUB_REPOSITORY_TITLE' ) ) || ! empty( get_env( 'GITHUB_REPOSITORY_TITLE' ) ) ) {
