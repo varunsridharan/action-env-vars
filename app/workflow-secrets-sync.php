@@ -13,7 +13,7 @@ foreach ( $json as $repo => $vars ) {
 		if ( ! isset( $groups[ $group ] ) ) {
 			$groups[ $group ] = array();
 		}
-		$groups[ $group ][] = $vars;
+		$groups[ $group ][] = $repo;
 	}
 }
 
