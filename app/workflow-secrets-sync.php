@@ -19,11 +19,7 @@ foreach ( $json as $repo => $vars ) {
 
 if ( ! empty( $groups ) ) {
 	foreach ( $groups as $env_var => $value ) {
-		if ( is_array( $value ) ) {
-			$value = implode( PHP_EOL, array_filter( $value ) );
-		}
-		$value              = ' |' . PHP_EOL . $value;
-		$groups[ $env_var ] = $value;
-		set_action_env_not_exists( $env_var, $value, true );
+		$groups[ $env_var ] = json_encode( array_filter( $value ) );
+		set_action_env_not_exists( $env_var, $groups[ $env_var ], true );
 	}
 }

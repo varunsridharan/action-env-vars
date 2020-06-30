@@ -9,8 +9,6 @@ try {
 
 	$workflow_type = ( is_env_not_exists( get_env( 'VS_WORKFLOW_TYPE' ) ) ) ? false : get_env( 'VS_WORKFLOW_TYPE' );
 
-	set_action_env_not_exists( 'MY_LARGE_VAR', json_encode( array( 'value1', 'value2' ) ), true );
-
 	if ( in_array( $workflow_type, array( 'workflow-sync', 'secrets-sync' ) ) ) {
 		require_once APP_PATH . 'workflow-secrets-sync.php';
 	} else {
