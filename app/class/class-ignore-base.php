@@ -36,8 +36,9 @@ abstract class Ignore_Base {
 			_echo( '✔️ Assets DISTIGNORE File Found : ' . $ignore_file );
 			_echo( 'Added Predefined Assets DISTIGNORE' );
 		}
-
-		$ignorec = implode( PHP_EOL, array_filter( array_unique( array_merge( explode( PHP_EOL, @file_get_contents( $ignore_file ) ), $this->default_content() ) ) ) );
+		$ignorec = trim( @file_get_contents( $ignore_file ) );
+		$ignorec = implode( PHP_EOL, array_filter( array_unique( array_merge( explode( PHP_EOL, $ignorec ), $this->default_content() ) ) ) );
+		$ignorec = trim( $ignorec );
 		@file_get_contents( $ignore_file, $ignorec );
 		echo_group_contents( $ignorec );
 		return $path;
@@ -51,7 +52,7 @@ abstract class Ignore_Base {
 		}
 
 		$ignore_file    = $this->workspace() . '/' . $this->default_location();
-		$ignore_content = implode( PHP_EOL, $this->default_content() );
+		$ignore_content = trim( implode( PHP_EOL, $this->default_content() ) );
 		@file_put_contents( $ignore_file, $ignore_content );
 		echo_group_contents( $ignore_content );
 		return $this->default_location();
