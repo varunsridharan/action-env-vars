@@ -40,7 +40,7 @@ abstract class Ignore_Base {
 		$ignorec = implode( PHP_EOL, array_filter( array_unique( array_merge( explode( PHP_EOL, @file_get_contents( $ignore_file ) ), $this->default_content() ) ) ) );
 		@file_get_contents( $ignore_file, $ignorec );
 		echo_group_contents( $ignorec );
-		return $ignore_file;
+		return $path;
 	}
 
 	protected function handle_file_not_exits( $path ) {
@@ -54,7 +54,7 @@ abstract class Ignore_Base {
 		$ignore_content = implode( PHP_EOL, $this->default_content() );
 		@file_put_contents( $ignore_file, $ignore_content );
 		echo_group_contents( $ignore_content );
-		return $ignore_file;
+		return $this->default_location();
 	}
 
 	protected function default_location() {
