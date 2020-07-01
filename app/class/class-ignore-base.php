@@ -18,6 +18,8 @@ abstract class Ignore_Base {
 			}
 		}
 
+		_echo( ' ' );
+
 		if ( ! empty( $exists_location ) ) {
 			return $this->handle_file_exists( $exists_location );
 		} else {
