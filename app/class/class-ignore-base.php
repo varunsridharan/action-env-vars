@@ -38,11 +38,9 @@ abstract class Ignore_Base {
 		}
 		$ignorec = trim( @file_get_contents( $ignore_file ) );
 		$ignorec = array_map( 'trim', explode( PHP_EOL, $ignorec ) );
-		$ignorec = array_merge( $ignorec, $this->default_content() );
-		var_dump( $ignorec );
+		$ignorec = array_merge( $this->default_content(), $ignorec );
 		$ignorec = implode( PHP_EOL, array_filter( array_unique( $ignorec ) ) );
 		$ignorec = trim( $ignorec );
-		var_dump($ignorec);
 		@file_get_contents( $ignore_file, $ignorec );
 		echo_group_contents( $ignorec );
 		return $path;
