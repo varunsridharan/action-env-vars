@@ -31,23 +31,21 @@ if ( empty( $ignore_file ) ) {
 	_echo( '⚠️ DISTIGNORE File Not Found ! | Creating Default ' );
 	$ignore_file = $workspace . '/' . $default['ignore'];
 	@file_put_contents( $ignore_file, implode( PHP_EOL, $default_ignore_content ) );
-	_echo( 'File Contents :' . implode( PHP_EOL, $default_ignore_content ) );
+	echo_group_contents( implode( PHP_EOL, $default_ignore_content ) );
 } else {
 	$ignore_file = $workspace . '/' . $ignore_file;
 	_echo( "✔️ DISTIGNORE File Found : ${workspace}/${ignore_file}" );
 	_echo( 'Added Predefined DISTIGNORE' );
-	$ignore_file_user_content = explode( PHP_EOL, @file_get_contents( $ignore_file ) );
-	$ignore_file_user_content = implode( PHP_EOL, array_filter( array_unique( array_merge( $default_ignore_content, $ignore_file_user_content ) ) ) );
+	$ignore_file_user_content = implode( PHP_EOL, array_filter( array_unique( array_merge( $default_ignore_content, explode( PHP_EOL, @file_get_contents( $ignore_file ) ) ) ) ) );
 	@file_get_contents( $ignore_file, $ignore_file_user_content );
-	_echo( 'File Contents :' . $ignore_file_user_content );
+	echo_group_contents( $ignore_file_user_content );
 }
-_echo( '' );
 
 if ( empty( $assets_ignore_file ) ) {
 	_echo( '⚠️ Assets DISTIGNORE File Not Found ! | Creating Default ' );
 	$assets_ignore_file = $workspace . '/' . $default['assets'];
 	@file_put_contents( $assets_ignore_file, implode( PHP_EOL, $default_assets_ignore_content ) );
-	_echo( 'File Contents :' . implode( PHP_EOL, $default_assets_ignore_content ) );
+	echo_group_contents( implode( PHP_EOL, $default_assets_ignore_content ) );
 } else {
 	$assets_ignore_file = $workspace . '/' . $assets_ignore_file;
 	_echo( "✔️ Assets DISTIGNORE File Found : ${workspace}/${ignore_file}" );
@@ -55,9 +53,8 @@ if ( empty( $assets_ignore_file ) ) {
 	$assets_ignore_file_content = explode( PHP_EOL, @file_get_contents( $assets_ignore_file ) );
 	$assets_ignore_file_content = implode( PHP_EOL, array_filter( array_unique( array_merge( $default_assets_ignore_content, $assets_ignore_file_content ) ) ) );
 	@file_get_contents( $ignore_file, $assets_ignore_file_content );
-	_echo( 'File Contents :' . $assets_ignore_file_content );
+	echo_group_contents( $assets_ignore_file_content );
 }
-_echo( '' );
 
 set_action_env_not_exists( 'ENVATO_DIST_IGNORE', $ignore_file, true );
 set_action_env_not_exists( 'ENVATO_ASSETS_DIST_IGNORE', $assets_ignore_file, true );

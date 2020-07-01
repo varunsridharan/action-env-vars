@@ -132,3 +132,10 @@ function default_ignore_content( $type = 'wp' ) {
 function default_assets_ignore( $type = 'wp' ) {
 	return ( 'wp' === $type ) ? array( '*.psd', '*.zip' ) : array( 'screenshots/*', 'psd/*.zip' );
 }
+
+function echo_group_contents( $content ) {
+	_echo( '------------------------------------' );
+	_echo( $content );
+	_echo( '------------------------------------' );
+	_echo( ' ' );
+}
