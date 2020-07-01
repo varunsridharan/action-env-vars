@@ -10,6 +10,7 @@ abstract class Ignore_Base {
 
 		if ( ! empty( $files_to_check ) && is_array( $files_to_check ) ) {
 			foreach ( $files_to_check as $file ) {
+				_echo( 'Checking In : ' . $this->workspace() . '/' . $file );
 				if ( file_exists( $this->workspace() . '/' . $file ) ) {
 					$exists_location = $file;
 					break;
@@ -27,10 +28,10 @@ abstract class Ignore_Base {
 	protected function handle_file_exists( $path ) {
 		$ignore_file = $this->workspace() . '/' . $path;
 		if ( 'ignore' === $this->type ) {
-			_echo( '⚠️ DISTIGNORE File Found : ' . $ignore_file );
+			_echo( '✔️ DISTIGNORE File Found : ' . $ignore_file );
 			_echo( 'Added Predefined DISTIGNORE' );
 		} else {
-			_echo( '⚠️ Assets DISTIGNORE File Found : ' . $ignore_file );
+			_echo( '✔️ Assets DISTIGNORE File Found : ' . $ignore_file );
 			_echo( 'Added Predefined Assets DISTIGNORE' );
 		}
 
