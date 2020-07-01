@@ -7,20 +7,11 @@ class Envato_Ignore extends Ignore_Base {
 	}
 
 	protected function default_ignore() {
-		return array(
-			'/src/',
-			'gulpfile.js',
+		return array_merge( array(
 			'gulp-config.js',
-			'composer.lock',
-			'composer.json',
-			'wp-pot.json',
 			'envato_assets_exclude_list.txt',
 			'.envatoassets',
-			'.gitignore',
-			'.editorconfig',
-			'vendor/*/*/README.md',
-			'vendor/*/*/.gitignore',
-		);
+		), parent::default_ignore() );
 	}
 
 	protected function default_assets_ignore_location() {
