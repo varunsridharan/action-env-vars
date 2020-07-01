@@ -16,6 +16,10 @@ try {
 	if ( 'envato-release' === $workflow_type ) {
 		require_once APP_PATH . 'envato.php';
 	}
+
+	if ( 'wordpress-org-release' === $workflow_type ) {
+		require_once APP_PATH . 'wordpress.php';
+	}
 } catch ( Exception $exception ) {
 	die( '::error:: ' . $exception->getMessage() );
 }
