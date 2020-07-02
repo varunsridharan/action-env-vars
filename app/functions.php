@@ -1,4 +1,12 @@
 <?php
+function option( $key, $default = false ) {
+	static $args = array();
+	if ( empty( $args ) ) {
+		$args = json_decode( APP_PATH . 'config.json' );
+	}
+	return ( isset( $args[ $key ] ) ) ? $args[ $key ] : $default;
+}
+
 /**
  * Sets Global ENV Variable For Github Action
  *
@@ -67,7 +75,9 @@ function _echo( $content, $is_cmd = false ) {
 	}
 }
 
-
+/**
+ * @param $content
+ */
 function echo_group_contents( $content ) {
 	_echo( '------------------------------------' );
 	_echo( $content );

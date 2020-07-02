@@ -1,8 +1,35 @@
 <?php
 
-abstract class Ignore_Base {
+/**
+ * Class Ignore_Base
+ *
+ * @author Varun Sridharan <varunsridharan23@gmail.com>
+ */
+class Ignore_Base {
+	/**
+	 * @var string
+	 */
 	protected $type = 'ignore';
 
+	/**
+	 * @var string
+	 */
+	protected $prefix = 'ENVATO';
+
+	/**
+	 * Ignore_Base constructor.
+	 *
+	 * @param bool $prefix
+	 */
+	public function __construct( $prefix = false ) {
+		$this->prefix = $prefix;
+	}
+
+	/**
+	 * @param $type
+	 *
+	 * @return bool|mixed
+	 */
 	public function run( $type ) {
 		$this->type      = $type;
 		$files_to_check  = ( 'ignore' === $this->type ) ? $this->possible_ignore_locations() : $this->possible_assets_ignore_locations();
@@ -27,6 +54,11 @@ abstract class Ignore_Base {
 		}
 	}
 
+	/**
+	 * @param $path
+	 *
+	 * @return mixed
+	 */
 	protected function handle_file_exists( $path ) {
 		$ignore_file = $this->workspace() . '/' . $path;
 		if ( 'ignore' === $this->type ) {
@@ -46,6 +78,11 @@ abstract class Ignore_Base {
 		return $path;
 	}
 
+	/**
+	 * @param $path
+	 *
+	 * @return bool|mixed
+	 */
 	protected function handle_file_not_exits( $path ) {
 		if ( 'ignore' === $this->type ) {
 			_echo( '⚠️ DISTIGNORE File Not Found ! | Creating Default ' );
@@ -60,64 +97,72 @@ abstract class Ignore_Base {
 		return $this->default_location();
 	}
 
+	/**
+	 * @return bool|mixed
+	 */
 	protected function default_location() {
 		return ( 'ignore' === $this->type ) ? $this->default_ignore_location() : $this->default_assets_ignore_location();
 	}
 
+	/**
+	 * @return array|bool|mixed
+	 */
 	protected function default_content() {
 		return ( 'ignore' === $this->type ) ? $this->default_ignore() : $this->default_assets_ignore();
 	}
 
+	/**
+	 * @return bool|\ENV_Not_Exists|mixed
+	 */
 	protected function workspace() {
 		return get_env( 'GITHUB_WORKSPACE', '' );
 	}
 
-	abstract protected function default_ignore_location();
+	/**
+	 * @return bool|mixed
+	 */
+	protected function default_ignore_location() {
+		return option( $this->prefix . '_DEFAULT_IGNORE_LOCATION', array() );
 
-	abstract protected function default_assets_ignore_location();
-
-	protected function default_ignore() {
-		return array(
-			'vendor/*/*/README.md',
-			'vendor/*/*/readme.md',
-			'vendor/*/*/LICENSE',
-			'vendor/*/*/composer.json',
-			'vendor/*/*/.editorconfig',
-			'vendor/*/*/CHANGELOG.md',
-			'vendor/*/*/CODE_OF_CONDUCT.md',
-			'vendor/*/*/composer.lock',
-			'vendor/*/*/bin',
-			'vendor/*/*/.gitignore',
-			'vendor/*/*/.gitattributes',
-			'vendor/*/*/.all-contributorsrc',
-			'vendor/*/*/package-lock.json',
-			'vendor/*/*/package.json',
-			'vendor/*/*/wp-pot.json',
-			'vendor/composer/LICENSE',
-			'vendor/composer/installed.json',
-			'.all-contributorsrc',
-			'.editorconfig',
-			'.gitattributes',
-			'.gitignore',
-			'.git',
-			'.github',
-			'LICENSE',
-			'composer.json',
-			'composer.lock',
-			'vendor/bin',
-			'config.js',
-			'gulp-custom.js',
-			'gulpfile.js',
-			'package.json',
-			'package-lock.json',
-			'wp-pot.json',
-			'/src/',
-		);
 	}
 
-	abstract protected function default_assets_ignore();
+	/**
+	 * @return array
+	 */
+	protected function default_ignore() {
+		return array_merge( option( $this->prefix . '_IGNORE', array() ), option( 'DEFAULT_IGNORE', array() ) );
+	}
 
-	abstract protected function possible_ignore_locations();
+	/**
+	 * @return bool|mixed
+	 */
+	protected function possible_ignore_locations() {
+		$data   = option( $this->prefix . '_POSSIBLE_IGNORE_LOCATION', array() );
+		$data[] = $this->default_ignore_location();
+		return $data;
+	}
 
-	abstract protected function possible_assets_ignore_locations();
+
+	/**
+	 * @return bool|mixed
+	 */
+	protected function default_assets_ignore() {
+		return option( $this->prefix . '_ASSETS_IGNORE', array() );
+	}
+
+	/**
+	 * @return bool|mixed
+	 */
+	protected function default_assets_ignore_location() {
+		return option( $this->prefix . '_DEFAULT_ASSETS_IGNORE_LOCATION', array() );
+	}
+
+	/**
+	 * @return bool|mixed
+	 */
+	protected function possible_assets_ignore_locations() {
+		$data   = option( $this->prefix . '_POSSIBLE_ASSETS_IGNORE_LOCATION', array() );
+		$data[] = $this->default_assets_ignore_location();
+		return $data;
+	}
 }
