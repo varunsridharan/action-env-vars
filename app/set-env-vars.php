@@ -33,6 +33,7 @@ foreach ( $env_vars as $id => $val ) {
 
 
 _echo( 'GITHUB.event' );
+_echo(get_env('GITHUB_TOKEN'));
 _echo( file_get_contents( 'https://api.github.com/repos/' . implode( '/', $github_repo ) ) );
 _echo( '' );
 
