@@ -1,24 +1,9 @@
 <?php
-_echo( 'GITHUB_JOB' );
-_echo( json_encode( get_env( 'GITHUB_JOB' ) ) );
-_echo( '' );
-
-_echo( 'GITHUB_WORKFLOW' );
-_echo( json_encode( get_env( 'GITHUB_WORKFLOW' ) ) );
-_echo( '' );
 
 _echo( 'GITHUB.event' );
-_echo( json_encode( get_env( 'github.event' ) ) );
+_echo( file_get_contents( get_env( 'GITHUB_EVENT_PATH' ) ) );
 _echo( '' );
 
-_echo( 'GITHUB' );
-_echo( json_encode( get_env( 'github' ) ) );
-_echo( '' );
-
-
-_echo( 'ALL EVN' );
-_echo( json_encode( $_ENV ) );
-_echo( '' );
 
 _echo( '###[group] 🛠️  Setting Required ENV Variables' );
 
