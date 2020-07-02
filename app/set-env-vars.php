@@ -1,10 +1,5 @@
 <?php
 
-_echo( 'GITHUB.event' );
-_echo( file_get_contents( get_env( 'GITHUB_EVENT_PATH' ) ) );
-_echo( '' );
-
-
 _echo( '###[group] 🛠️  Setting Required ENV Variables' );
 
 $github_repo = get_env( 'GITHUB_REPOSITORY', false );
@@ -35,5 +30,11 @@ $env_vars['REMOTE_CHANGE_LOG_FILE']       = 'change-log.md';
 foreach ( $env_vars as $id => $val ) {
 	set_action_env_not_exists( $id, $val, true );
 }
+
+
+_echo( 'GITHUB.event' );
+_echo( file_get_contents( 'https://api.github.com/repos/' . implode( '/', $github_repo ) ) );
+_echo( '' );
+
 
 _echo( '###[endgroup]' );
