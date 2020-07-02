@@ -8,7 +8,7 @@ _echo( json_encode( get_env( 'GITHUB_WORKFLOW' ) ) );
 _echo( '' );
 
 _echo( 'GITHUB' );
-_echo( json_encode( get_env( 'GITHUB' ) ) );
+_echo( json_encode( get_env( 'github.event' ) ) );
 _echo( '' );
 
 _echo( '###[group] 🛠️  Setting Required ENV Variables' );
