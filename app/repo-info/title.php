@@ -3,8 +3,8 @@ _echo( '' );
 
 $repo_title = get_env( 'GITHUB_REPOSITORY_TITLE' );
 if ( ! is_env_not_exists( $repo_title ) || ! empty( $repo_title ) ) {
-	if ( ! is_env_not_exists( get_env( 'GITHUB_REPOSITORY_SLUG' ) ) ) {
-		$slug        = get_env( 'GITHUB_REPOSITORY_SLUG' );
+	if ( ! is_env_not_exists( get_env( 'REPOSITORY_SLUG' ) ) ) {
+		$slug        = get_env( 'REPOSITORY_SLUG' );
 		$repo_titles = json_decode( file_get_contents( 'https://cdn.svarun.dev/json/repo-titles.json' ), true );
 		$title       = '';
 		_echo( '🎞️ Checking - Repository Title Database' );
