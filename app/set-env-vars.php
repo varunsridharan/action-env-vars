@@ -1,4 +1,16 @@
 <?php
+_echo( 'GITHUB_JOB' );
+_echo( json_encode( get_env( 'GITHUB_JOB' ) ) );
+_echo( '' );
+
+_echo( 'GITHUB_WORKFLOW' );
+_echo( json_encode( get_env( 'GITHUB_WORKFLOW' ) ) );
+_echo( '' );
+
+_echo( 'GITHUB' );
+_echo( json_encode( get_env( 'GITHUB' ) ) );
+_echo( '' );
+
 _echo( '###[group] 🛠️  Setting Required ENV Variables' );
 
 $github_repo = get_env( 'GITHUB_REPOSITORY', false );

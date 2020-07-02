@@ -11,7 +11,7 @@ try {
 
 	require_once APP_PATH . 'set-env-vars.php';
 
-	require_once APP_PATH . 'repo-title.php';
+	require_once APP_PATH . 'repo-info.php';
 
 	if ( 'envato-release' === $workflow_type ) {
 		require_once APP_PATH . 'envato.php';
