@@ -1,10 +1,12 @@
 <?php
+global $vs_args;
+$vs_args = array();
 function option( $key, $default = false ) {
-	static $args = array();
-	if ( empty( $args ) ) {
-		$args = json_decode( APP_PATH . 'config.json' );
+	global $vs_args;
+	if ( empty( $vs_args ) ) {
+		$vs_args = json_decode( APP_PATH . 'config.json', true );
 	}
-	return ( isset( $args[ $key ] ) ) ? $args[ $key ] : $default;
+	return ( isset( $vs_args[ $key ] ) ) ? $vs_args[ $key ] : $default;
 }
 
 /**
