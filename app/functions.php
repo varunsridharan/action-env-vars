@@ -4,7 +4,7 @@ $vs_args = array();
 function option( $key, $default = false ) {
 	global $vs_args;
 	if ( empty( $vs_args ) ) {
-		$vs_args = json_decode( APP_PATH . 'config.json', true );
+		$vs_args = json_decode( file_get_contents( APP_PATH . 'config.json' ), true );
 	}
 	return ( isset( $vs_args[ $key ] ) ) ? $vs_args[ $key ] : $default;
 }
