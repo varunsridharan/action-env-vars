@@ -6,7 +6,7 @@ $workspace  = get_env( 'GITHUB_WORKSPACE' );
 $title      = '';
 $rmf        = false;
 
-if ( is_env_not_exists( $slug ) ) {
+if ( ! is_env_not_exists( $slug ) ) {
 
 	if ( file_exists( $workspace . '/readme.md' ) ) {
 		$rmf = 'readme.md';
