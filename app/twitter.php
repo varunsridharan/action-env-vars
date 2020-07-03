@@ -32,12 +32,11 @@ if ( in_array( 'wp-library', $topics ) ) {
 }
 
 if ( in_array( 'php-library', $topics ) ) {
-
 }
 
 if ( empty( $message ) ) {
 	$message = "📢 ${repo_title} V ${release_tag_name} Released 🎉 
-	Download Now 👉 ${release_url}";
+Download Now 👉 ${release_url}";
 }
 
 set_action_env_not_exists( 'TWITTER_STATUS', escape_multiple_lin( $message ), true );
