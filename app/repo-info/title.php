@@ -2,11 +2,9 @@
 _echo( '' );
 $repo_title = get_env( 'REPOSITORY_NAME' );
 $slug       = get_env( 'REPOSITORY_SLUG' );
-var_dump( $slug );
-var_dump( is_env_not_exists( $slug ) );
-$workspace = get_env( 'GITHUB_WORKSPACE' );
-$title     = '';
-$rmf       = false;
+$workspace  = get_env( 'GITHUB_WORKSPACE' );
+$title      = '';
+$rmf        = false;
 
 if ( ! is_env_not_exists( $slug ) ) {
 	if ( file_exists( $workspace . '/readme.md' ) ) {
