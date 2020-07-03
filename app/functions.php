@@ -86,3 +86,25 @@ function echo_group_contents( $content ) {
 	_echo( '------------------------------------' );
 	_echo( ' ' );
 }
+
+/**
+ * @param $content
+ *
+ * @return string|string[]
+ * @since {NEWVERSION}
+ * @example |
+ * multi_line="Line 01
+ * Line 02
+ * Line 03"
+ *
+ * # escape the characters '%', '\n' and '\r'
+ * multi_line="${multi_line//'%'/'%25'}"
+ * multi_line="${multi_line//$'\n'/'%0A'}"
+ * multi_line="${multi_line//$'\r'/'%0D'}"
+ * @see https://github.community/t/set-env-variable-using-github-action-workflow-cmd/120536/2
+ */
+function escape_multiple_lin( $content ) {
+	$content = str_replace( '%', '%25', $content );
+	$content = str_replace( '\n', '%0A', $content );
+	return str_replace( '\r', '%0D', $content );
+}
