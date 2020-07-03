@@ -103,8 +103,8 @@ function echo_group_contents( $content ) {
  * multi_line="${multi_line//$'\r'/'%0D'}"
  * @see https://github.community/t/set-env-variable-using-github-action-workflow-cmd/120536/2
  */
-function escape_multiple_lin( $content ) {
+function escape_multiple_line( $content ) {
 	$content = str_replace( '%', '%25', $content );
-	$content = str_replace( '\n', '%0A', $content );
+	$content = str_replace( PHP_EOL, '%0A', $content );
 	return str_replace( '\r', '%0D', $content );
 }

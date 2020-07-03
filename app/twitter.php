@@ -39,4 +39,4 @@ if ( empty( $message ) ) {
 Download Now 👉 ${release_url}";
 }
 
-set_action_env_not_exists( 'TWITTER_STATUS', escape_multiple_lin( $message ), true );
+set_action_env_not_exists( 'TWITTER_STATUS', escape_multiple_line( $message ), true );
