@@ -37,9 +37,9 @@ if ( in_array( 'php-library', $topics ) ) {
 
 if ( empty( $message ) ) {
 	$message = <<<TEXT
-📢 ${repo_title} V ${release_tag_name}  Released 🎉
-👉 ${release_url}
+📢 ${repo_title} V ${release_tag_name}  Released 🎉 
+Download Now 👉 ${release_url}
 TEXT;
 }
 
-echo $message;
+set_action_env_not_exists( 'TWITTER_STATUS', $message, true );
