@@ -20,9 +20,7 @@ try {
 		require_once APP_PATH . 'wordpress.php';
 	}
 
-	if ( 'twitter-post' === $workflow_type ) {
-		require_once APP_PATH . 'twitter.php';
-	}
+	require_once APP_PATH . 'twitter.php';
 
 } catch ( Exception $exception ) {
 	die( '::error:: ' . $exception->getMessage() );
