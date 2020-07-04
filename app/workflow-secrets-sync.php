@@ -12,7 +12,7 @@ if ( ! empty( $workflow_type ) ) {
 	}
 
 	foreach ( $groups as $env_var => $value ) {
-		set_action_env_not_exists( $env_var, escape_multiple_line( implode( PHP_EOL, array_filter( $value ) ) ) );
+		set_action_env( $env_var, escape_multiple_line( implode( PHP_EOL, array_filter( $value ) ) ) );
 	}
 } else {
 	die( '::error:: Invalid Type Provided' );
