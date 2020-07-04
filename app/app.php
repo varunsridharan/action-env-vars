@@ -9,19 +9,22 @@ try {
 
 	$workflow_type = ( is_env_not_exists( get_env( 'VS_WORKFLOW_TYPE' ) ) ) ? false : get_env( 'VS_WORKFLOW_TYPE' );
 
-	require_once APP_PATH . 'set-env-vars.php';
-	require_once APP_PATH . 'repo-info.php';
+	if ( 'workflow-sync' === $workflow_type || 'secrets-sync' === $workflow_type ) {
+		require_once APP_PATH . 'workflow-secrets-sync.php';
+	} else {
+		require_once APP_PATH . 'set-env-vars.php';
+		require_once APP_PATH . 'repo-info.php';
 
-	if ( 'envato-release' === $workflow_type ) {
-		require_once APP_PATH . 'envato.php';
+		if ( 'envato-release' === $workflow_type ) {
+			require_once APP_PATH . 'envato.php';
+		}
+
+		if ( 'wordpress-org-release' === $workflow_type ) {
+			require_once APP_PATH . 'wordpress.php';
+		}
+
+		require_once APP_PATH . 'twitter.php';
 	}
-
-	if ( 'wordpress-org-release' === $workflow_type ) {
-		require_once APP_PATH . 'wordpress.php';
-	}
-
-	require_once APP_PATH . 'twitter.php';
-
 } catch ( Exception $exception ) {
 	die( '::error:: ' . $exception->getMessage() );
 }

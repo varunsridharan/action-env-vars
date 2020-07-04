@@ -19,7 +19,7 @@ function option( $key, $default = false ) {
  * @return true
  */
 function set_action_env( $key, $value ) {
-	_echo( "::set-env name=${key}::${value}", true );
+	_echo( "::set-env name=${key}::${value}" );
 	$_ENV[ $key ] = $value;
 	return true;
 }
@@ -67,14 +67,9 @@ function is_env_not_exists( $instance ) {
 
 /**
  * @param      $content
- * @param bool $is_cmd
  */
-function _echo( $content, $is_cmd = false ) {
-	if ( $is_cmd ) {
-		echo PHP_EOL . $content . PHP_EOL;
-	} else {
-		echo $content . PHP_EOL;
-	}
+function _echo( $content ) {
+	echo $content . PHP_EOL;
 }
 
 /**
