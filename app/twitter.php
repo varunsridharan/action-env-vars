@@ -1,4 +1,6 @@
 <?php
+_echo( '###[group] 🐦 Generating Tweet Message' );
+
 $topics     = get_env( 'REPOSITORY_TOPICS', false );
 $event      = get_env( 'GITHUB_EVENT_PATH', false );
 $repo_title = get_env( 'GITHUB_REPOSITORY_TITLE', false );
@@ -42,7 +44,7 @@ if ( in_array( 'envato-plugin', $topics ) || in_array( 'vs-envato-plugin', $topi
 
 if ( in_array( 'github-action', $topics ) || in_array( 'vs-github-action', $topics ) ) {
 	$message = "📢 ${repo_title} V ${release_tag_name} Released 🎉 ${shomeurl}
-	#github #githubaction #actions";
+	@github #GitHubActions";
 }
 
 if ( empty( $message ) ) {
@@ -51,3 +53,5 @@ Download Now 👉 ${srelease_url}";
 }
 
 set_action_env_not_exists( 'TWITTER_STATUS', escape_multiple_line( $message ), true );
+
+_echo( '###[endgroup]' );
