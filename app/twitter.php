@@ -18,8 +18,12 @@ if ( file_exists( $event ) ) {
 $release_tag_name = ( isset( $event['release']['tag_name'] ) ) ? $event['release']['tag_name'] : false;
 $release_url      = ( isset( $event['release']['html_url'] ) ) ? $event['release']['html_url'] : false;
 
+_echo( 'Home URL : ' . $homeurl );
 $shomeurl     = getsh_url( $homeurl );
+_echo( 'Release URL : ' . $release_url );
 $srelease_url = getsh_url( $release_url );
+
+
 if ( ! empty( $topics ) ) {
 	$topics = json_decode( $topics, true );
 }
