@@ -7,33 +7,34 @@ $title      = '';
 $rmf        = false;
 
 if ( ! is_env_not_exists( $slug ) ) {
-	if ( file_exists( $workspace . '/readme.md' ) ) {
-		$rmf = 'readme.md';
-	}
+	if ( ! empty( $workspace ) ) {
+		_echo( 'Looking For Repository README File.' );
 
-	if ( file_exists( $workspace . '/README.md' ) ) {
-		$rmf = 'README.md';
-	}
+		$files = array( 'readme.md', 'README.md', 'readme.MD', 'README.MD' );
 
-	if ( file_exists( $workspace . '/readme.MD' ) ) {
-		$rmf = 'readme.MD';
-	}
-
-	if ( file_exists( $workspace . '/README.MD' ) ) {
-		$rmf = 'README.MD';
-	}
-
-	if ( ! empty( $rmf ) ) {
-		_echo( '🎞️ README.md Found - Extracting Title' );
-		$rmf = file_get_contents( $workspace . '/' . $rmf );
-		preg_match( '/^(#\s)(.*)/m', $rmf, $matches, 0, 0 );
-		if ( isset( $matches[2] ) ) {
-			$matches[2] = strip_tags( Slimdown::render( $matches[2] ) );
-			if ( ! empty( $matches[2] ) ) {
-				$title = $matches[2];
-				_echo( '✔️ Repository Title Found In README.md' );
+		foreach ( $files as $file ) {
+			_echo( 'Looking In : ' . $workspace . '/' . $file );
+			if ( file_exists( $workspace . '/' . $file ) ) {
+				$rmf = $workspace . '/' . $file;
+				_echo( '🎞️ README.md Found : ' . $workspace . '/' . $file );
+				break;
 			}
 		}
+
+
+		if ( ! empty( $rmf ) ) {
+			$rmf = file_get_contents( $rmf );
+			preg_match( '/^(#\s)(.*)/m', $rmf, $matches, 0, 0 );
+			if ( isset( $matches[2] ) ) {
+				$matches[2] = strip_tags( Slimdown::render( $matches[2] ) );
+				if ( ! empty( $matches[2] ) ) {
+					$title = $matches[2];
+					_echo( '✔️ Repository Title Found In README.md' );
+				}
+			}
+		}
+	} else {
+		_echo( 'No Repository Content Found.' );
 	}
 
 	if ( empty( $title ) ) {
