@@ -1,8 +1,8 @@
 <?php
 _echo( '' );
-$repo_title = get_env( 'REPOSITORY_NAME' );
-$slug       = get_env( 'REPOSITORY_SLUG' );
-$workspace  = get_env( 'GITHUB_WORKSPACE' );
+$repo_title = get_env( 'REPOSITORY_NAME', false );
+$slug       = get_env( 'REPOSITORY_SLUG', false );
+$workspace  = get_env( 'GITHUB_WORKSPACE', false );
 $title      = '';
 $rmf        = false;
 
@@ -25,7 +25,7 @@ if ( ! is_env_not_exists( $slug ) ) {
 
 	if ( ! empty( $rmf ) ) {
 		_echo( '🎞️ README.md Found - Extracting Title' );
-		$rmf = file_get_contents( $rmf );
+		$rmf = file_get_contents( $workspace . '/' . $rmf );
 		preg_match( '/^(#\s)(.*)/m', $rmf, $matches, 0, 0 );
 		if ( isset( $matches[2] ) ) {
 			$matches[2] = strip_tags( Slimdown::render( $matches[2] ) );
