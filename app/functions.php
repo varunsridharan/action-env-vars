@@ -18,9 +18,12 @@ function option( $key, $default = false ) {
  *
  * @return true
  */
-function set_action_env( $key, $value ) {
+function set_action_env( $key, $value, $msg = false ) {
 	_echo( "::set-env name=${key}::${value}" );
 	$_ENV[ $key ] = $value;
+	if ( $msg ) {
+		_echo( "✔️ ENV  ${key} SET WITH VALUE ${value}" );
+	}
 	return true;
 }
 
@@ -35,10 +38,7 @@ function set_action_env( $key, $value ) {
  */
 function set_action_env_not_exists( $key, $value, $msg = false ) {
 	if ( ! isset( $_ENV[ $key ] ) ) {
-		set_action_env( $key, $value );
-		if ( $msg ) {
-			_echo( "✔️ ENV  ${key} SET WITH VALUE ${value}" );
-		}
+		set_action_env( $key, $value, $msg );
 		return true;
 	}
 	_echo( "ℹ️ ENV ${key} ALREADY EXISTS WITH VALUE - {$_ENV[$key]}" );
