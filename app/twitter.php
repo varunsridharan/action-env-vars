@@ -41,7 +41,7 @@ if ( in_array( 'envato-plugin', $topics ) || in_array( 'vs-envato-plugin', $topi
 }
 
 if ( in_array( 'github-action', $topics ) || in_array( 'vs-github-action', $topics ) ) {
-	$message = "📢 ${repo_title} V ${release_tag_name} Released 🎉 ${homeurl}
+	$message = "📢 ${repo_title} V ${release_tag_name} Released 🎉 ${shomeurl}
 	#github #githubaction #actions";
 }
 
