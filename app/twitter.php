@@ -3,6 +3,7 @@ $topics     = get_env( 'REPOSITORY_TOPICS', false );
 $event      = get_env( 'GITHUB_EVENT_PATH', false );
 $repo_title = get_env( 'GITHUB_REPOSITORY_TITLE', false );
 $homeurl    = get_env( 'REPOSITORY_HOMEPAGE_URL', false );
+$shomeurl   = $homeurl;
 $message    = false;
 
 if ( file_exists( $event ) ) {
@@ -15,6 +16,8 @@ if ( file_exists( $event ) ) {
 $release_tag_name = ( isset( $event['release']['tag_name'] ) ) ? $event['release']['tag_name'] : false;
 $release_url      = ( isset( $event['release']['html_url'] ) ) ? $event['release']['html_url'] : false;
 
+$shomeurl     = getsh_url( $homeurl );
+$srelease_url = getsh_url( $release_url );
 if ( ! empty( $topics ) ) {
 	$topics = json_decode( $topics, true );
 }
@@ -44,7 +47,7 @@ if ( in_array( 'github-action', $topics ) || in_array( 'vs-github-action', $topi
 
 if ( empty( $message ) ) {
 	$message = "📢 ${repo_title} V ${release_tag_name} Released 🎉 
-Download Now 👉 ${release_url}";
+Download Now 👉 ${srelease_url}";
 }
 
 set_action_env_not_exists( 'TWITTER_STATUS', escape_multiple_line( $message ), true );

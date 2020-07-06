@@ -103,3 +103,42 @@ function escape_multiple_line( $content ) {
 	$content = str_replace( PHP_EOL, '%0A', $content );
 	return str_replace( '\r', '%0D', $content );
 }
+
+/**
+ * @param bool $token
+ * @param null $url
+ * @param null $custom
+ *
+ * @return mixed
+ * @since {NEWVERSION}
+ */
+function sva_shorturl( $token = false, $url = null, $custom = null ) {
+	$api_url = 'https://sva.onl/api/?key=' . $token . '&url=' . urlencode( filter_var( $url, FILTER_SANITIZE_URL ) );
+
+	if ( ! empty( $custom ) ) {
+		$api_url .= '&custom=' . strip_tags( $custom );
+	}
+
+	$curl = curl_init();
+	curl_setopt_array( $curl, array(
+		CURLOPT_RETURNTRANSFER => 1,
+		CURLOPT_URL            => $api_url,
+	) );
+	$response = curl_exec( $curl );
+	curl_close( $curl );
+	return json_decode( $response, true );
+}
+
+/**
+ * @param $url
+ *
+ * @return mixed
+ * @since {NEWVERSION}
+ */
+function getsh_url( $url ) {
+	$shurl = sva_shorturl( get_env( 'SVA_ONL_TOKEN', false ), $url );
+	if ( isset( $shurl['short'] ) && isset( $shurl['error'] ) && 0 === $shurl['error'] ) {
+		return $shurl['short'];
+	}
+	return $url;
+}
