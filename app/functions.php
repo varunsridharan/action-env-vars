@@ -136,9 +136,16 @@ function sva_shorturl( $token = false, $url = null, $custom = null ) {
  * @since {NEWVERSION}
  */
 function getsh_url( $url ) {
+	$token = get_env( 'SVA_ONL_TOKEN', false );
+
+	if ( empty( $token ) ) {
+		_echo( 'https://sva.onl API Token Missing !' );
+	}
 	$shurl = sva_shorturl( get_env( 'SVA_ONL_TOKEN', false ), $url );
 	if ( isset( $shurl['short'] ) && isset( $shurl['error'] ) && 0 === $shurl['error'] ) {
+		_echo( 'Short URL : ' . $shurl['short'] );
 		return $shurl['short'];
 	}
+	_echo( 'Unable To Short URL !!' );
 	return $url;
 }
