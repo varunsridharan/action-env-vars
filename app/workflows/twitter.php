@@ -72,11 +72,12 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 				$message = '📢 {repo_title} V {version} Released 🎉 {short_home_url}';
 				//$defaulttags[] = '#githubactions';
 				break;
-			default:
-				$message = '📢 {repo_title} V {version} Released 🎉 Download Now 👉 ';
-				$message .= ( 'yes' === get_env( 'REPOSITORY_IS_PRIVATE', false ) ) ? ' {short_home_url}' : ' {short_release_url}';
-				break;
 		}
+	}
+
+	if ( empty( $message ) ) {
+		$message = '📢 {repo_title} V {version} Released 🎉 Download Now 👉 ';
+		$message .= ( 'yes' === get_env( 'REPOSITORY_IS_PRIVATE', false ) ) ? ' {short_home_url}' : ' {short_release_url}';
 	}
 
 	$sr      = array(
