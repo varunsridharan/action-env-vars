@@ -148,3 +148,94 @@ function repo_topics() {
 	$topics = ( ! empty( REPO_TOPICS ) ) ? json_decode( REPO_TOPICS, true ) : '';
 	return ( ! is_array( $topics ) ) ? array() : $topics;
 }
+
+/**
+ * @param bool $token
+ * @param null $url
+ * @param null $custom
+ *
+ * @return mixed
+ * @since {NEWVERSION}
+ */
+function sva_shorturl( $token = false, $url = null, $custom = null ) {
+	$api_url = 'https://sva.onl/api/?key=' . $token . '&url=' . urlencode( filter_var( $url, FILTER_SANITIZE_URL ) );
+
+	if ( ! empty( $custom ) ) {
+		$api_url .= '&custom=' . strip_tags( $custom );
+	}
+
+	$curl = curl_init();
+	curl_setopt_array( $curl, array(
+		CURLOPT_RETURNTRANSFER => 1,
+		CURLOPT_URL            => $api_url,
+	) );
+	$response = curl_exec( $curl );
+	curl_close( $curl );
+	return json_decode( $response, true );
+}
+
+/**
+ * @param $url
+ *
+ * @return mixed
+ * @since {NEWVERSION}
+ */
+function getsh_url( $url ) {
+	if ( empty( SHORT_URL_TOKEN ) ) {
+		_( 'https://sva.onl API Token Missing !' );
+	}
+	$shurl = sva_shorturl( SHORT_URL_TOKEN, $url );
+	if ( isset( $shurl['short'] ) && isset( $shurl['error'] ) && 0 === $shurl['error'] ) {
+		_( 'Short URL : ' . $shurl['short'] );
+		return $shurl['short'];
+	}
+	_( 'Unable To Short URL !!' );
+	return $url;
+}
+
+/**
+ * converts github topics to hashtags.
+ *
+ * @return string[]
+ * @since {NEWVERSION}
+ */
+function twitter_hash_tags() {
+	$topics    = repo_topics();
+	$hash_tags = array();
+	if ( ! empty( $topics ) ) {
+		foreach ( $topics as $topic ) {
+			if ( false !== strpos( $topic, 'vs-' ) ) {
+				continue;
+			}
+
+			if ( false !== strpos( $topic, 'vsp-' ) ) {
+				continue;
+			}
+			$hash_tags[] = $topic;
+		}
+	}
+
+	return array_map( function ( $value ) {
+		return '#' . str_replace( '-', '', $value );
+	}, $hash_tags );
+
+}
+
+/**
+ * Generates Twitter Message
+ * @param $msg
+ * @param $tags
+ * @param $default_tags
+ *
+ * @return string
+ * @since {NEWVERSION}
+ */
+function form_tweet_msg( $msg, $tags, $default_tags ) {
+	$tags         = ( is_array( $tags ) ) ? implode( ' ', $tags ) : $tags;
+	$default_tags = ( is_array( $default_tags ) ) ? implode( ' ', $default_tags ) : $default_tags;
+	$msg          = trim( $msg );
+	$tags         = trim( $tags );
+	$default_tags = trim( $default_tags );
+	return $msg . '
+' . $tags . $default_tags;
+}
