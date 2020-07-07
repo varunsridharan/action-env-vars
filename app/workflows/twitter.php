@@ -9,6 +9,10 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 	$hash_tags   = twitter_hash_tags();
 	$defaulttags = array();
 
+	if ( empty( $homeurl ) ) {
+		$homeurl = get_env( 'REPOSITORY_GITHUB_URL', false );
+	}
+
 	/**
 	 * Fetches Event Data.
 	 */
