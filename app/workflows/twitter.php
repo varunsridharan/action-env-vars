@@ -112,13 +112,13 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 		}
 	}
 
-	_echo( ' ' );
-	_echo( '------------------------------------------------------------------------------------' );
-	_echo( 'Tweet Message : ' . $message );
-	_echo( 'Hashtags : ' . implode( ' ', $hash_tags ) );
-	_echo( 'Default Hashtags : ' . implode( ' ', $default_hashtags ) );
-	_echo( 'Tweet Parse Info : ' . print_r( $result, true ) );
-	_echo( '------------------------------------------------------------------------------------' );
+	_( ' ' );
+	_( '------------------------------------------------------------------------------------' );
+	_( 'Tweet Message : ' . $message );
+	_( 'Hashtags : ' . implode( ' ', $hash_tags ) );
+	_( 'Default Hashtags : ' . implode( ' ', $default_hashtags ) );
+	_( 'Tweet Parse Info : ' . print_r( $result, true ) );
+	_( '------------------------------------------------------------------------------------' );
 
 	$message = form_tweet_msg( $message, $hash_tags, $default_hashtags );
 	set_action_env_not_exists( 'TWITTER_STATUS', escape_multiple_line( $message ), true );
