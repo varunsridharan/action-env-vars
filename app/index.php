@@ -12,7 +12,7 @@ define( 'REPO_NAME', get_env( 'REPOSITORY_NAME', false ) );
 define( 'REPO_SLUG', get_env( 'REPOSITORY_SLUG', false ) );
 define( 'REPO_TOPICS', get_env( 'REPOSITORY_TOPICS', false ) );
 
-if ( 'workflow-sync' === $workflow_type || 'secrets-sync' === $workflow_type ) {
+if ( 'workflow-sync' === WORKFLOW_TYPE || 'secrets-sync' === WORKFLOW_TYPE ) {
 	require_once APP_PATH . 'workflow-secrets-sync.php';
 } else {
 	require_once APP_PATH . 'vendor/slim-markdown.php';

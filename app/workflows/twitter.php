@@ -1,5 +1,7 @@
 <?php
-_( '###[group] 🐦 Generating Tweet Message' );
+if ( 'twitter-post' === WORKFLOW_TYPE ) {
+	_( '###[group] 🐦 Generating Tweet Message' );
+}
 $message = false;
 if ( 'twitter-post' === WORKFLOW_TYPE ) {
 	load_files( glob( APP_PATH . 'vendor/TwitterText/*.php' ) );
@@ -128,4 +130,6 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 	$message = form_tweet_msg( $message, $hash_tags, $defaulttags );
 	set_action_env_not_exists( 'TWITTER_STATUS', escape_multiple_line( $message ), true );
 }
-_( '###[endgroup]' );
+if ( 'twitter-post' === WORKFLOW_TYPE ) {
+	_( '###[endgroup]' );
+}
