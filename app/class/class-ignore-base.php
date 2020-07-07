@@ -74,7 +74,7 @@ class Ignore_Base {
 		$ignorec = implode( PHP_EOL, array_filter( array_unique( $ignorec ) ) );
 		$ignorec = trim( $ignorec ) . PHP_EOL;
 		@file_put_contents( $ignore_file, $ignorec );
-		echo_group_contents( $ignorec );
+		_group_contents( $ignorec );
 		return $path;
 	}
 
@@ -93,7 +93,7 @@ class Ignore_Base {
 		$ignore_file    = $this->workspace() . '/' . $this->default_location();
 		$ignore_content = trim( implode( PHP_EOL, $this->default_content() ) );
 		@file_put_contents( $ignore_file, $ignore_content );
-		echo_group_contents( $ignore_content );
+		_group_contents( $ignore_content );
 		return $this->default_location();
 	}
 
