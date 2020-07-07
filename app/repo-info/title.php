@@ -1,8 +1,8 @@
 <?php
+global $workspace;
 _echo( '' );
 $repo_title = get_env( 'REPOSITORY_NAME', false );
 $slug       = get_env( 'REPOSITORY_SLUG', false );
-$workspace  = get_env( 'GITHUB_WORKSPACE', false );
 $title      = '';
 $rmf        = false;
 

@@ -1,6 +1,5 @@
 <?php
-global $workflow_type;
-$workspace = get_env( 'GITHUB_WORKSPACE', false );
+global $workflow_type,$workspace;
 
 if ( ! empty( $workflow_type ) ) {
 	$cat        = json_decode( file_get_contents( $workspace . '/.github/repo-config.json' ), true );
