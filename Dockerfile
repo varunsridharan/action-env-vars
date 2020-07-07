@@ -2,9 +2,9 @@ FROM php:cli-alpine
 
 LABEL maintainer="Varun Sridharan <varunsridharan23@gmail.com>"
 
-ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
+RUN docker-php-ext-install mbstring
 
-RUN chmod uga+x /usr/local/bin/install-php-extensions && sync && install-php-extensions intl mbstring
+RUN docker-php-ext-install intl
 
 COPY entrypoint.sh /entrypoint.sh
 
