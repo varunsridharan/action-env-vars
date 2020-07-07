@@ -9,6 +9,7 @@ $envs['VS_AFTER_HOOK_FILE_LOCATION']  = WORKSPACE . "/.github/workspace/{$envs['
 require_once 'repo-title.php';
 require_once 'repo-type.php';
 
+_( '' );
 foreach ( $envs as $id => $val ) {
 	set_action_env_not_exists( $id, $val, true );
 }

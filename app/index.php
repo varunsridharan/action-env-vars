@@ -17,5 +17,7 @@ if ( 'workflow-sync' === $workflow_type || 'secrets-sync' === $workflow_type ) {
 } else {
 	require_once APP_PATH . 'vendor/slim-markdown.php';
 	require_once APP_PATH . 'env-vars/index.php';
+	load_files( glob( APP_PATH . 'class/*.php' ) );
+	load_files( glob( APP_PATH . 'workflows/*.php' ) );
 }
 
