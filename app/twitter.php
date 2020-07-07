@@ -122,6 +122,7 @@ _echo( '------------------------------------------------------------------------
 _echo( 'Tweet Message : ' . $message );
 _echo( 'Hashtags : ' . implode( ' ', $hash_tags ) );
 _echo( 'Default Hashtags : ' . implode( ' ', $default_hashtags ) );
+_echo( 'Tweet Parse Info : ' . escape_multiple_line( print_r( $result, true ) ) );
 _echo( '------------------------------------------------------------------------------------' );
 
 $message = $message . ' ' . trim( implode( ' ', $hash_tags ) ) . ' ' . trim( implode( ' ', $default_hashtags ) );
