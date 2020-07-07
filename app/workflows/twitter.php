@@ -82,8 +82,8 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 	}
 
 	if ( empty( $message ) ) {
-		$message = '📢 {repo_title} V {version} Released 🎉 Download Now 👉 ';
-		$message .= ( 'yes' === get_env( 'REPOSITORY_IS_PRIVATE', false ) ) ? ' {short_home_url}' : ' {short_release_url}';
+		$message = '📢 {repo_title} V {version} Released 🎉 Download Now 👉  {short_home_url}';
+		//$message .= ( 'yes' === get_env( 'REPOSITORY_IS_PRIVATE', false ) ) ? ' {short_home_url}' : ' {short_release_url}';
 	}
 
 	$sr      = array(
