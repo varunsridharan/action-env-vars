@@ -1,7 +1,5 @@
 {
   "require" : {
-	"nojimage/twitter-text-php"        : "^3.1",
-	"symfony/polyfill-mbstring"        : "*",
-	"symfony/polyfill-intl-normalizer" : "*"
+	"nojimage/twitter-text-php" : "^3.1"
   }
 }
