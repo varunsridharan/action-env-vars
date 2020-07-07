@@ -78,7 +78,12 @@ if ( empty( $message ) ) {
 }
 
 if ( empty( $message ) ) {
-	$message = '📢 {repo_title} V {version} Released 🎉 Download Now 👉 {short_release_url}';
+	$message = '📢 {repo_title} V {version} Released 🎉 Download Now 👉 ';
+	if ( 'yes' === get_env( 'REPOSITORY_IS_PRIVATE', false ) ) {
+		$message .= ' {short_home_url}';
+	} else {
+		$message .= ' {short_release_url}';
+	}
 }
 
 $sr      = array(
