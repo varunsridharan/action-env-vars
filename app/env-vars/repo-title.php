@@ -16,10 +16,9 @@ if ( ! empty( WORKSPACE ) ) {
 		_( 'Looking In : ' . $file );
 		if ( repo_has_file( $file ) ) {
 			_( '✔️  File Found.' );
-			$readme_file = repo_file( $file );
-			$readme_file = file_get_contents( $rmf );
+			$readme_file = file_get_contents( repo_file( $file ) );
 
-			preg_match( '/^(#\s)(.*)/m', $rmf, $matches, 0, 0 );
+			preg_match( '/^(#\s)(.*)/m', $readme_file, $matches, 0, 0 );
 			if ( isset( $matches[2] ) ) {
 				$matches[2] = strip_tags( Slimdown::render( $matches[2] ) );
 				if ( ! empty( $matches[2] ) ) {
@@ -46,7 +45,7 @@ if ( empty( $title ) ) {
 
 if ( empty( $title ) ) {
 	$title = REPO_NAME;
-	_echo( '⚠️ Repository Title Not Found In Database | Using Slug is used as Title' );
+	_( '⚠️ Repository Title Not Found In Database | Using Slug is used as Title' );
 }
 
 $envs['GITHUB_REPOSITORY_TITLE'] = $title;
