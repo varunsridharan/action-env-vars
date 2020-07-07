@@ -1,7 +1,7 @@
 <?php
 global $envs;
 _( ' ' );
-_( 'Looking For Repository README File' );
+_( 'Looking For Repository Title' );
 $readme_file  = false;
 $title        = '';
 $readme_files = array( 'readme.md', 'README.md', 'readme.MD', 'README.MD' );
