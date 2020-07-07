@@ -15,7 +15,7 @@ if ( ! empty( WORKSPACE ) ) {
 	foreach ( $readme_files as $file ) {
 		_( 'Looking In : ' . $file );
 		if ( repo_has_file( $file ) ) {
-			_( '✔️  File Found.' );
+			_( '✔️ File Found.' );
 			$readme_file = file_get_contents( repo_file( $file ) );
 
 			preg_match( '/^(#\s)(.*)/m', $readme_file, $matches, 0, 0 );
