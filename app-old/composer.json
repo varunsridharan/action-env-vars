@@ -1,5 +1,0 @@
-{
-  "require" : {
-	"nojimage/twitter-text-php" : "^3.1"
-  }
-}
