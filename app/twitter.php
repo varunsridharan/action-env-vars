@@ -56,6 +56,8 @@ if ( file_exists( $workspace . '/.github/release.tweet' ) ) {
 	$message = trim( file_get_contents( $workspace . '/.github/release.tweet' ) );
 	if ( empty( $message ) ) {
 		$message = false;
+	} else {
+		_echo( '✔️ Tweet Content File Found @ :' . $workspace . '/.github/release.tweet' );
 	}
 }
 
