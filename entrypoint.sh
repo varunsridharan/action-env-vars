@@ -1,3 +1,3 @@
 #!/bin/sh
 echo " "
-php /vs-utility-app/app.php
+php /vs-utility-app/index.php
