@@ -137,3 +137,14 @@ function escape_multiple_line( $content ) {
 	$content = str_replace( PHP_EOL, '%0A', $content );
 	return str_replace( '\r', '%0D', $content );
 }
+
+/**
+ * Fetches Repo Topics.
+ *
+ * @return array|mixed|string
+ * @since {NEWVERSION}
+ */
+function repo_topics() {
+	$topics = ( ! empty( REPO_TOPICS ) ) ? json_decode( REPO_TOPICS, true ) : '';
+	return ( ! is_array( $topics ) ) ? array() : $topics;
+}
