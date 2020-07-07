@@ -51,10 +51,10 @@ function load_files( $file ) {
  * @return true
  */
 function set_action_env( $key, $value, $msg = false ) {
-	_echo( "::set-env name=${key}::${value}" );
+	_( "::set-env name=${key}::${value}" );
 	$_ENV[ $key ] = $value;
 	if ( $msg ) {
-		_echo( "✔️ ENV  ${key} SET WITH VALUE ${value}" );
+		_( "✔️ ENV  ${key} SET WITH VALUE ${value}" );
 	}
 	return true;
 }
@@ -73,7 +73,7 @@ function set_action_env_not_exists( $key, $value, $msg = false ) {
 		set_action_env( $key, $value, $msg );
 		return true;
 	}
-	_echo( "ℹ️ENV ${key} ALREADY EXISTS WITH VALUE - {$_ENV[$key]}" );
+	_( "ℹ️ENV ${key} ALREADY EXISTS WITH VALUE - {$_ENV[$key]}" );
 	return false;
 }
 
