@@ -91,12 +91,12 @@ $sr      = array(
 );
 $message = str_replace( array_keys( $sr ), array_values( $sr ), $message );
 $message = trim( $message );
-$result  = $parser->parseTweet( $message . ' ' . implode( ' ', $hash_tags ) . ' ' . implode( ' ', $default_hashtags ) );
+$result  = $parser->parseTweet( form_tweet_msg( $message, $hash_tags, $default_hashtags ) );
 
 if ( ! $result->valid ) {
 	$is_it_not_valid = true;
 	while ( $is_worknot_done ) {
-		$result = $parser->parseTweet( $message . ' ' . implode( ' ', $hash_tags ) . ' ' . implode( ' ', $default_hashtags ) );
+		$result = $parser->parseTweet( form_tweet_msg( $message, $hash_tags, $default_hashtags ) );
 		if ( $result->valid ) {
 			$is_worknot_done = false;
 		} else {
@@ -119,7 +119,7 @@ _echo( 'Default Hashtags : ' . implode( ' ', $default_hashtags ) );
 _echo( 'Tweet Parse Info : ' . print_r( $result, true ) );
 _echo( '------------------------------------------------------------------------------------' );
 
-$message = $message . ' ' . trim( implode( ' ', $hash_tags ) ) . ' ' . trim( implode( ' ', $default_hashtags ) );
+$message = form_tweet_msg( $message, $hash_tags, $default_hashtags );
 set_action_env_not_exists( 'TWITTER_STATUS', escape_multiple_line( $message ), true );
 
 _echo( '###[endgroup]' );

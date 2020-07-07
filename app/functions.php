@@ -149,3 +149,13 @@ function getsh_url( $url ) {
 	_echo( 'Unable To Short URL !!' );
 	return $url;
 }
+
+function form_tweet_msg( $msg, $tags, $default_tags ) {
+	$tags         = ( is_array( $tags ) ) ? implode( ' ', $tags ) : $tags;
+	$default_tags = ( is_array( $default_tags ) ) ? implode( ' ', $default_tags ) : $default_tags;
+	$msg          = trim( $msg );
+	$tags         = trim( $tags );
+	$default_tags = trim( $default_tags );
+	return $msg . '
+' . $tags . $default_tags;
+}
