@@ -39,18 +39,9 @@ if ( ! empty( $topics ) ) {
 	}
 }
 
-if ( ! empty( $hash_tags ) ) {
-	if ( count( $hash_tags ) > 3 ) {
-		shuffle( $hash_tags );
-		$hash_tags = array_slice( $hash_tags, 0, 3 );
-	}
-
-	$hash_tags = array_map( function ( $value ) {
-		return '#' . str_replace( '-', '', $value );
-	}, $hash_tags );
-} else {
-	$hash_tags = array();
-}
+$hash_tags = array_map( function ( $value ) {
+	return '#' . str_replace( '-', '', $value );
+}, $hash_tags );
 
 if ( file_exists( $workspace . '/.github/release.tweet' ) ) {
 	$message = trim( file_get_contents( $workspace . '/.github/release.tweet' ) );
