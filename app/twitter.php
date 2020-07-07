@@ -45,7 +45,7 @@ if ( ! empty( $hash_tags ) ) {
 		$hash_tags = array_slice( $hash_tags, 0, 3 );
 	}
 
-	array_map( function ( $value ) {
+	$hash_tags = array_map( function ( $value ) {
 		return '#' . str_replace( '-', '', $value );
 	}, $hash_tags );
 } else {
@@ -118,11 +118,12 @@ if ( ! $result->valid ) {
 	}
 }
 
+_echo( ' ' );
 _echo( '------------------------------------------------------------------------------------' );
 _echo( 'Tweet Message : ' . $message );
 _echo( 'Hashtags : ' . implode( ' ', $hash_tags ) );
 _echo( 'Default Hashtags : ' . implode( ' ', $default_hashtags ) );
-_echo( 'Tweet Parse Info : ' . escape_multiple_line( print_r( $result, true ) ) );
+_echo( 'Tweet Parse Info : ' . print_r( $result, true ) );
 _echo( '------------------------------------------------------------------------------------' );
 
 $message = $message . ' ' . trim( implode( ' ', $hash_tags ) ) . ' ' . trim( implode( ' ', $default_hashtags ) );
