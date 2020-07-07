@@ -1,11 +1,11 @@
 <?php
 _( '###[group] 🐦 Generating Tweet Message' );
+$message = false;
 if ( 'twitter-post' === WORKFLOW_TYPE ) {
 	load_files( glob( APP_PATH . 'vendor/TwitterText/*.php' ) );
 	$parser      = new \Twitter\Text\Parser();
 	$topics      = repo_topics();
 	$homeurl     = get_env( 'REPOSITORY_HOMEPAGE_URL', false );
-	$message     = false;
 	$hash_tags   = twitter_hash_tags();
 	$defaulttags = array();
 
@@ -37,40 +37,40 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 	if ( empty( $message ) ) {
 		switch ( get_env( 'VS_REPOSITORY_TYPE' ) ) {
 			case 'css':
-				//$default_hashtags[] = '#css';
-				//$default_hashtags[] = '#csslibrary';
-				//$default_hashtags[] = '#cssutility';
-				//$default_hashtags[] = '#csslib';
+				//$defaulttags[] = '#css';
+				//$defaulttags[] = '#csslibrary';
+				//$defaulttags[] = '#cssutility';
+				//$defaulttags[] = '#csslib';
 				break;
 			case 'javascript':
-				//$default_hashtags[] = '#javascript';
-				//$default_hashtags[] = '#js';
-				//$default_hashtags[] = '#javascriptlibrary';
-				//$default_hashtags[] = '#javascriptutility';
-				//$default_hashtags[] = '#javascriptlib';
+				//$defaulttags[] = '#javascript';
+				//$defaulttags[] = '#js';
+				//$defaulttags[] = '#javascriptlibrary';
+				//$defaulttags[] = '#javascriptutility';
+				//$defaulttags[] = '#javascriptlib';
 				break;
 			case 'php':
-				//$default_hashtags[] = '#php';
-				//$default_hashtags[] = '#phplibrary';
-				//$default_hashtags[] = '#phputility';
-				//$default_hashtags[] = '#phplib';
+				//$defaulttags[] = '#php';
+				//$defaulttags[] = '#phplibrary';
+				//$defaulttags[] = '#phputility';
+				//$defaulttags[] = '#phplib';
 				break;
 			case 'wp-library':
-				//$default_hashtags[] = '#wordpress';
-				//$default_hashtags[] = '#wplibrary';
-				//$default_hashtags[] = '#wputility';
-				//$default_hashtags[] = '#wplib';
+				//$defaulttags[] = '#wordpress';
+				//$defaulttags[] = '#wplibrary';
+				//$defaulttags[] = '#wputility';
+				//$defaulttags[] = '#wplib';
 				break;
 			case 'wordpress-org':
-				//$default_hashtags[] = '#wordpress';
-				//$default_hashtags[] = '#wpplugin';
+				//$defaulttags[] = '#wordpress';
+				//$defaulttags[] = '#wpplugin';
 				break;
 			case 'envato-plugin':
-				//$default_hashtags[] = '#envato';
+				//$defaulttags[] = '#envato';
 				break;
 			case 'github-action':
-				$message            = '📢 {repo_title} V {version} Released 🎉 {short_home_url}';
-				//$default_hashtags[] = '#githubactions';
+				$message = '📢 {repo_title} V {version} Released 🎉 {short_home_url}';
+				//$defaulttags[] = '#githubactions';
 				break;
 			default:
 				$message = '📢 {repo_title} V {version} Released 🎉 Download Now 👉 ';
@@ -92,12 +92,12 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 }
 
 if ( 'twitter-post' === WORKFLOW_TYPE ) {
-	$result = $parser->parseTweet( form_tweet_msg( $message, $hash_tags, $default_hashtags ) );
+	$result = $parser->parseTweet( form_tweet_msg( $message, $hash_tags, $defaulttags ) );
 
 	if ( ! $result->valid ) {
 		$is_it_not_valid = true;
 		while ( $is_worknot_done ) {
-			$result = $parser->parseTweet( form_tweet_msg( $message, $hash_tags, $default_hashtags ) );
+			$result = $parser->parseTweet( form_tweet_msg( $message, $hash_tags, $defaulttags ) );
 			if ( $result->valid ) {
 				$is_worknot_done = false;
 			} else {
@@ -105,8 +105,8 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 					array_pop( $hash_tags );
 				}
 
-				if ( empty( $hash_tags ) && ! empty( $default_hashtags ) ) {
-					array_pop( $default_hashtags );
+				if ( empty( $hash_tags ) && ! empty( $defaulttags ) ) {
+					array_pop( $defaulttags );
 				}
 			}
 		}
@@ -116,11 +116,11 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 	_( '------------------------------------------------------------------------------------' );
 	_( 'Tweet Message : ' . $message );
 	_( 'Hashtags : ' . implode( ' ', $hash_tags ) );
-	_( 'Default Hashtags : ' . implode( ' ', $default_hashtags ) );
+	_( 'Default Hashtags : ' . implode( ' ', $defaulttags ) );
 	_( 'Tweet Parse Info : ' . print_r( $result, true ) );
 	_( '------------------------------------------------------------------------------------' );
 
-	$message = form_tweet_msg( $message, $hash_tags, $default_hashtags );
+	$message = form_tweet_msg( $message, $hash_tags, $defaulttags );
 	set_action_env_not_exists( 'TWITTER_STATUS', escape_multiple_line( $message ), true );
 }
 _( '###[endgroup]' );
