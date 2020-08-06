@@ -102,6 +102,7 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 	$result = $parser->parseTweet( form_tweet_msg( $message, $hash_tags, $defaulttags ) );
 
 	if ( ! $result->valid ) {
+		$is_worknot_done = true;
 		$is_it_not_valid = true;
 		while ( $is_worknot_done ) {
 			$result = $parser->parseTweet( form_tweet_msg( $message, $hash_tags, $defaulttags ) );
@@ -126,6 +127,7 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 	_( 'Default Hashtags : ' . implode( ' ', $defaulttags ) );
 	_( 'Tweet Parse Info : ' . print_r( $result, true ) );
 	_( '------------------------------------------------------------------------------------' );
+	_( ' ' );
 
 	$message = form_tweet_msg( $message, $hash_tags, $defaulttags );
 	set_action_env_not_exists( 'TWITTER_STATUS', escape_multiple_line( $message ), true );
