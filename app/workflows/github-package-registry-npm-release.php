@@ -5,7 +5,7 @@ if ( 'github-package-registry-npm-release' === WORKFLOW_TYPE ) {
 		$contents = json_decode( $contents, true );
 		print_r( $contents );
 
-		if ( ! ( preg_match( '#^' . '@varunsridharan' . '#', $contents['name'] ) === 1 ) ) {
+		if ( ! ( preg_match( '#^' . '@' . REPO_OWNER . '#', $contents['name'] ) === 1 ) ) {
 			$contents['name'] = '@' . REPO_OWNER . '/' . $contents['name'];
 		}
 		$contents['publishConfig'] = array( 'registry' => 'https://npm.pkg.github.com/' );
