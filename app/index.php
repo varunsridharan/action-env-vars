@@ -10,7 +10,7 @@ define( 'WORKFLOW_TYPE', get_env( 'VS_WORKFLOW_TYPE', false ) );
 define( 'SHORT_URL_TOKEN', get_env( 'SVA_ONL_TOKEN', false ) );
 define( 'REPO_NAME', get_env( 'REPOSITORY_NAME', false ) );
 define( 'REPO_SLUG', get_env( 'REPOSITORY_SLUG', false ) );
-define( 'REPO_OWNER', get_env( 'REPOSITORY_OWNER', false ) );
+define( 'REPO_OWNER', get_env( 'GITHUB_REPOSITORY_OWNER', false ) );
 define( 'REPO_TOPICS', get_env( 'REPOSITORY_TOPICS', false ) );
 
 if ( 'workflow-sync' === WORKFLOW_TYPE || 'secrets-sync' === WORKFLOW_TYPE ) {
