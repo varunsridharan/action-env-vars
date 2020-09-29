@@ -1,5 +1,5 @@
 <?php
-if ( 'github-package-registry-npm-release' === WORKFLOW_TYPE ) {
+if ( 'gpr-npm-release' === WORKFLOW_TYPE ) {
 	if ( repo_has_file( 'package.json' ) ) {
 		$contents = file_get_contents( repo_file( 'package.json' ) );
 		$contents = json_decode( $contents, true );
