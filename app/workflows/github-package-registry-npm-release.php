@@ -17,6 +17,13 @@ if ( 'github-package-registry-npm-release' === WORKFLOW_TYPE ) {
 		_( print_r( $contents, true ) );
 		_( '###[endgroup]' );
 
+
+		if ( ! repo_has_file( '.npmrc' ) ) {
+			$contents = '//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}' . PHP_EOL;
+			$contents .= 'registry=https://npm.pkg.github.com/OWNER';
+			file_put_contents( repo_file( '.npmrc' ), $contents );
+		}
+
 	} else {
 		__( '🛑 Unable To Find Package.json' );
 	}
