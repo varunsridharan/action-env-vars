@@ -1,5 +1,5 @@
 <?php
-if ( 'github-package-registry-npm-release' === WORKFLOW_TYPE ) {
+if ( 'github-package-registry-npm-releases' === WORKFLOW_TYPE ) {
 	if ( repo_has_file( 'package.json' ) ) {
 		$contents = file_get_contents( repo_file( 'package.json' ) );
 		$contents = json_decode( $contents, true );
@@ -25,6 +25,6 @@ if ( 'github-package-registry-npm-release' === WORKFLOW_TYPE ) {
 		}*/
 
 	} else {
-		__( '🛑 Unable To Find Package.json' );
+		_( '🛑 Unable To Find Package.json' );
 	}
 }
