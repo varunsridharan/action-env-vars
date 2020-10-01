@@ -183,6 +183,7 @@ function sva_shorturl( $token = false, $url = null, $custom = null ) {
 function getsh_url( $url ) {
 	if ( empty( SHORT_URL_TOKEN ) ) {
 		_( 'https://sva.onl API Token Missing !' );
+		return $url;
 	}
 	$shurl = sva_shorturl( SHORT_URL_TOKEN, $url );
 	if ( isset( $shurl['short'] ) && isset( $shurl['error'] ) && 0 === $shurl['error'] ) {
@@ -223,6 +224,7 @@ function twitter_hash_tags() {
 
 /**
  * Generates Twitter Message
+ *
  * @param $msg
  * @param $tags
  * @param $default_tags
