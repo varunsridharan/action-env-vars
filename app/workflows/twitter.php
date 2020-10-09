@@ -8,11 +8,12 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 	$parser      = new \Twitter\Text\Parser();
 	$topics      = repo_topics();
 	$homeurl     = get_env( 'REPOSITORY_HOMEPAGE_URL', false );
+	$github_url  = get_env( 'REPOSITORY_GITHUB_URL', false );
 	$hash_tags   = twitter_hash_tags();
 	$defaulttags = array();
 
 	if ( empty( $homeurl ) ) {
-		$homeurl = get_env( 'REPOSITORY_GITHUB_URL', false );
+		$homeurl = $github_url;
 	}
 
 	/**
@@ -22,7 +23,8 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 	$event = ( file_exists( $event ) ) ? json_decode( file_get_contents( $event ), true ) : false;
 
 	_( 'Home URL : ' . $homeurl );
-	$shomeurl = getsh_url( $homeurl );
+	$shomeurl    = getsh_url( $homeurl );
+	$sgithub_url = getsh_url($github_url);
 }
 
 if ( 'twitter-post' === WORKFLOW_TYPE ) {
@@ -90,9 +92,11 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 		'{repo_title}'        => get_env( 'GITHUB_REPOSITORY_TITLE', false ),
 		'{version}'           => $release_tag_name,
 		'{home_url}'          => $homeurl,
+		'{github_url}'        => $github_url,
 		'{release_url}'       => $release_url,
 		'{short_release_url}' => $srelease_url,
 		'{short_home_url}'    => $shomeurl,
+		'{short_github_url}'  => $sgithub_url,
 	);
 	$message = str_replace( array_keys( $sr ), array_values( $sr ), $message );
 	$message = trim( $message );
