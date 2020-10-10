@@ -134,7 +134,7 @@ if ( 'twitter-post' === WORKFLOW_TYPE ) {
 	_( ' ' );
 
 	$message = form_tweet_msg( $message, $hash_tags, $defaulttags );
-	set_action_env_not_exists( 'TWITTER_STATUS', escape_multiple_line( $message ), true, true );
+	set_action_env_not_exists( 'TWITTER_STATUS', $message, true, true );
 }
 if ( 'twitter-post' === WORKFLOW_TYPE ) {
 	_( '###[endgroup]' );
