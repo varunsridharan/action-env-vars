@@ -53,7 +53,7 @@ function load_files( $file ) {
  */
 function set_action_env( $key, $value, $msg = false, $multiline = false ) {
 	if ( $multiline ) {
-		shell_exec( 'echo "' . $key . '<<<DATA" >> $GITHUB_ENV' );
+		shell_exec( 'echo "' . $key . '<<DATA" >> $GITHUB_ENV' );
 		shell_exec( 'echo "' . addslashes( $value ) . '" >> $GITHUB_ENV' );
 		shell_exec( 'echo "DATA" >> $GITHUB_ENV' );
 	} else {
