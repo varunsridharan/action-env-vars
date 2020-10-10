@@ -47,11 +47,20 @@ function load_files( $file ) {
  * @param $key
  * @param $value
  * @param $msg
+ * @param $multiline
  *
  * @return true
  */
-function set_action_env( $key, $value, $msg = false ) {
-	_( "::set-env name=${key}::${value}" );
+function set_action_env( $key, $value, $msg = false, $multiline = false ) {
+	if ( $multiline ) {
+		shell_exec( 'echo "' . $key . '<<<DATA"' );
+		shell_exec( 'echo "' . $value . '" >> $GITHUB_ENV' );
+		shell_exec( 'echo "DATA" >> $GITHUB_ENV' );
+	} else {
+		shell_exec( 'echo "' . $key . '=' . $value . '" >> $GITHUB_ENV' );
+	}
+
+	//_( "::set-env name=${key}::${value}" );
 	$_ENV[ $key ] = $value;
 	if ( $msg ) {
 		_( "✔️ ENV  ${key} SET WITH VALUE ${value}" );
@@ -65,12 +74,13 @@ function set_action_env( $key, $value, $msg = false ) {
  * @param $key
  * @param $value
  * @param $msg
+ * @param $multiline
  *
  * @return bool
  */
-function set_action_env_not_exists( $key, $value, $msg = false ) {
+function set_action_env_not_exists( $key, $value, $msg = false, $multiline = false ) {
 	if ( ! isset( $_ENV[ $key ] ) ) {
-		set_action_env( $key, $value, $msg );
+		set_action_env( $key, $value, $msg, $multiline );
 		return true;
 	}
 	_( "ℹ️ENV ${key} ALREADY EXISTS WITH VALUE - {$_ENV[$key]}" );
