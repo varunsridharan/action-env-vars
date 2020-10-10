@@ -54,10 +54,10 @@ function load_files( $file ) {
 function set_action_env( $key, $value, $msg = false, $multiline = false ) {
 	if ( $multiline ) {
 		shell_exec( 'echo "' . $key . '<<<DATA"' );
-		shell_exec( 'echo "' . $value . '" >> $GITHUB_ENV' );
+		shell_exec( 'echo "' . addslashes( $value ) . '" >> $GITHUB_ENV' );
 		shell_exec( 'echo "DATA" >> $GITHUB_ENV' );
 	} else {
-		shell_exec( 'echo "' . $key . '=' . $value . '" >> $GITHUB_ENV' );
+		shell_exec( 'echo "' . $key . '=' . addslashes( $value ) . '" >> $GITHUB_ENV' );
 	}
 
 	//_( "::set-env name=${key}::${value}" );

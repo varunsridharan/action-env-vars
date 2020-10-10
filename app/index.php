@@ -16,7 +16,6 @@ define( 'REPO_TOPICS', get_env( 'REPOSITORY_TOPICS', false ) );
 if ( 'workflow-sync' === WORKFLOW_TYPE || 'secrets-sync' === WORKFLOW_TYPE ) {
 	require_once APP_PATH . 'workflow-secrets-sync.php';
 } else {
-	var_dump( REPO_TOPICS );
 	require_once APP_PATH . 'vendor/slim-markdown.php';
 	require_once APP_PATH . 'env-vars/index.php';
 	load_files( glob( APP_PATH . 'class/*.php' ) );
