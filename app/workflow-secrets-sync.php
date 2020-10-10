@@ -29,5 +29,5 @@ foreach ( $json_files as $file ) {
 }
 
 foreach ( $final_var as $env_var => $value ) {
-	set_action_env( $env_var, escape_multiple_line( implode( PHP_EOL, array_filter( $value ) ) ), true );
+	set_action_env( $env_var, implode( PHP_EOL, array_filter( $value ) ), true, true );
 }
