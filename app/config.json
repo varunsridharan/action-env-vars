@@ -49,7 +49,7 @@
 	"distignore.txt"
   ],
   "ENVATO_DEFAULT_IGNORE_LOCATION"         : ".github/distignore.txt",
-  "ENVATO_ASSETS_IGNORE"                   : [ "screenshots/*", "psd/*.zip" ],
+  "ENVATO_ASSETS_IGNORE"                   : [ "screenshots/*", "psd/*.zip", "*.psd" ],
   "ENVATO_POSSIBLE_ASSETS_IGNORE_LOCATION" : [ "assets-distignore.txt", "envato_assets_exclude_list.txt" ],
   "ENVATO_DEFAULT_ASSETS_IGNORE_LOCATION"  : ".github/assets-distignore.txt",
   "WP_IGNORE"                              : [
