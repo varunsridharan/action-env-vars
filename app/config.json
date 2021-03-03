@@ -42,7 +42,7 @@
 	"wp-pot.json",
 	"/src/"
   ],
-  "ENVATO_IGNORE"                          : [ "gulp-config.js", "envato_assets_exclude_list.txt", ".envatoassets'" ],
+  "ENVATO_IGNORE"                          : [ "gulp-config.js", "envato_assets_exclude_list.txt", ".envatoassets" ],
   "ENVATO_POSSIBLE_IGNORE_LOCATION"        : [
 	"envato-distignore.txt",
 	".github/envato-distignore.txt",
